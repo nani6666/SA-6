@@ -7,7 +7,7 @@ import {RestapisService} from '../services/restapis.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
+  footer: any[] ;
   constructor(private _apiService: RestapisService) { }
 
   ngOnInit() {
@@ -15,7 +15,10 @@ export class FooterComponent implements OnInit {
   }
   public footerdata() {
     this._apiService.getApiResponse('getFooterStripProperties').subscribe( data => {
-      console.log(data);
+      if (data) {
+        const footerResponse = JSON.parse(data.FooterStrip.Main);
+        this.footer = footerResponse.items.item ;
+      }
      }, err => {
        console.log(err);
      });

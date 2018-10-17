@@ -4,44 +4,12 @@
   <section class="footer-top">
     <div class="container content">
       <div class="row">
-        <div class="col-sm-6 col-md-3 box-information">
+        <div class="col-sm-6 col-md-3 box-information" *ngFor="let item of footer;let footerMainIndex = index;">
           <div class="module clearfix">
-            <h3 class="modtitle">Information</h3>
+            <h3 class="modtitle">{{item.heading}}</h3>
             <div class="modcontent">
               <ul class="menu">
-                <li><a href="about-us.html">About Us</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="order-history.html">Order history</a></li>
-                <li><a href="order-information.html">Order information</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 box-service">
-          <div class="module clearfix">
-            <h3 class="modtitle">Customer Service</h3>
-            <div class="modcontent">
-              <ul class="menu">
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="return.html">Returns</a></li>
-                <li><a href="sitemap.html">Site Map</a></li>
-                <li><a href="my-account.html">My Account</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 box-account">
-          <div class="module clearfix">
-            <h3 class="modtitle">My Account</h3>
-            <div class="modcontent">
-              <ul class="menu">
-                <li><a href="#">Brands</a></li>
-                <li><a href="gift-voucher.html">Gift Vouchers</a></li>
-                <li><a href="#">Affiliates</a></li>
-                <li><a href="#">Specials</a></li>
-                <li><a href="#" target="_blank">Our Blog</a></li>
+                <li *ngFor="let subItem of item.options.option"><a href="{{subItem.clickurl}}">{{subItem.name}}</a></li>
               </ul>
             </div>
           </div>

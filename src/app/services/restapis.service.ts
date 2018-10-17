@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, filter, catchError, mergeMap } from 'rxjs/operators';
+import { environment} from '../../environments/environment';
 const url = 'http://dev.india4globe.com:8091/i4gorigin.advert.main/';
 const httpOptions = {
   headers: new HttpHeaders({
