@@ -7,6 +7,10 @@ import {RestapisService} from '../services/restapis.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  topleftResponse: any;
+  topRightResponse:any;
+  mainRightResponse: any;
+  mainLeftResponse: any;
 
   constructor(private _apiService: RestapisService) { }
 
@@ -15,7 +19,13 @@ export class HeaderComponent implements OnInit {
   }
   public headerdata() {
     this._apiService.getApiResponse('getHeaderStripProperties').subscribe( data => {
-      console.log(data);
+     if(data){
+      this.topleftResponse= JSON.parse(data.HeaderStrip.TopLeft);
+      this.topRightResponse = JSON.parse(data.HeaderStrip.TopRight);
+      this. mainRightResponse = JSON.parse(data.HeaderStrip.MainRight);
+      this.mainLeftResponse = JSON.parse(data.HeaderStrip.MainLeft);
+      console.log([this.topRightResponse , this.topleftResponse ,this.mainRightResponse , this.mainLeftResponse]);
+     }
      }, err => {
        console.log(err);
      });
