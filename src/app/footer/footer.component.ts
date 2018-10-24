@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
     this.footerdata();
   }
   public footerdata() {
-    this._apiService.getApiResponse('getFooterStripProperties').subscribe( data => {
+    this._apiService.getApiResponse('i4gorigin.advert.main/getFooterStripProperties').subscribe( data => {
       if (data) {
         const footerResponse = JSON.parse(data.FooterStrip.Main);
         this.footer = footerResponse.items.item ;

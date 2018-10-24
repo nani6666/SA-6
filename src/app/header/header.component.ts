@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
    this.headerdata();
   }
   public headerdata() {
-    this._apiService.getApiResponse('getHeaderStripProperties').subscribe( data => {
+    this._apiService.getApiResponse('i4gorigin.advert.main/getHeaderStripProperties').subscribe( data => {
      if (data) {
       this.topleftResponse = JSON.parse(data.HeaderStrip.TopLeft);
       this.topleftItems = this.topleftResponse.items.item;
@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit {
       this.mainLeftResponse = JSON.parse(data.HeaderStrip.MainLeft);
       this.mainLogo = this.mainLeftResponse.items.item[0];
       this.mainsearch = this.mainLeftResponse.items.item[1];
-      console.log(this.mainLeftResponse);
      }
      }, err => {
        console.log(err);

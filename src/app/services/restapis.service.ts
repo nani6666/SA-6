@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 import { environment} from '../../environments/environment';
-const url = 'http://dev.india4globe.com:8091/i4gorigin.advert.main/';
+const url = 'http://dev.india4globe.com:8091/';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -34,7 +34,7 @@ export class RestapisService {
                 .post<any>(url + api , data , httpOptions)
                 .pipe(
                   map((response: Response) => {
-                    return <any>response.json();
+                    return <any>response;
                 })).pipe(catchError((error: any) => error));
           }
 }

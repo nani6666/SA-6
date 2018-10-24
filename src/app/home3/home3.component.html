@@ -1,4 +1,5 @@
 <!-- Block Spotlight1  -->
+<div>
 <section class="so-spotlight1 ">
   <div class="container">
     <div class="row">
@@ -13,14 +14,10 @@
             </div>
             <div class="module ">
               <div class="yt-content-slider yt-content-slider--arrow1"  data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                <div class="yt-content-slide">
-                  <a href="JavaScript:void(0);"><img src="assets/image/demo/slider/v2-slide1.jpg" alt="slider1" class="img-responsive"></a>
-                </div>
-                <div class="yt-content-slide">
-                  <a href="JavaScript:void(0);"><img src="assets/image/demo/slider/v2-slide2.jpg" alt="slider2" class="img-responsive"></a>
-                </div>
-                <div class="yt-content-slide">
-                  <a href="JavaScript:void(0);"><img src="assets/image/demo/slider/v2-slide3.jpg" alt="slider3" class="img-responsive"></a>
+                <div class="yt-content-slide" *ngFor="let slideitem of sliderResponse" >
+                  <div  *ngFor="let subslideitem of slideitem.sliders.slider">
+										<a href="https://{{subslideitem.linkurl}}">
+											<img src="https://{{subslideitem.imageurl}}" alt="slider1" class="img-responsive"></a></div> 
                 </div>
               </div>
               <div class="loadeding"></div>
@@ -31,12 +28,14 @@
           
         </div>
       </div>
-      <div id="yt_header_right" class="col-md-3 hidden-sm hidden-xs">
-        <div class="module">
+      <div id="yt_header_right" class="col-md-3 hidden-sm hidden-xs" *ngFor="let sidebarItem of sidebarResponse">
+        <div class="module" *ngFor="let subsidebarItem of sidebarItem.sidebars.sidebar">
           <div class="modcontent clearfix">
             <div class="banners">
               <div>
-                <a href="JavaScript:void(0);"><img src="assets/image/demo/cms/v3-banner-header.png" alt="left-image"></a>
+								 <a (click)="onClick(subsidebarItem.advertitemcode)" > <!-- href="https://{{subsidebarItem.linkurl}}" -->
+									<img src="https://{{subsidebarItem.imageurl}}" alt="left-image">
+								</a>
               </div>
             </div>
           </div>
@@ -44,16 +43,17 @@
       </div>
     </div>
   </div>  
-</section>
+  </section>
+</div>
 <section class="so-spotlight1 ">
   <div class="container">
     <div class="row">
-      <div id="yt_header_right" class="col-md-12 hidden-sm hidden-xs">
-        <div class="module">
+			<div id="yt_header_right" class="col-md-12 hidden-sm hidden-xs" *ngFor="let stripItem of stripResponse">
+        <div class="module" *ngFor="let subStrip of stripItem.strips.strip">
           <div class="modcontent clearfix">
             <div class="banners">
               <div>
-                <a href="JavaScript:void(0);"><img src="assets/image/demo/shop/resize/w1-1200x80.jpg" alt="left-image"></a>
+                <a (click)="onClick(subStrip.advertitemcode)"><img src="https://s3-eu-west-1.amazonaws.com{{subStrip.imageurl}}" alt="left-image"></a>
               </div>
             </div>
           </div>
@@ -89,15 +89,15 @@
 							<!--Begin Items-->
 							<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
 								<div class="ltabs-items-inner ltabs-slider  owl2-carousel owl2-theme owl2-loaded">
-									
-									
-									
-								<div class="owl2-stage-outer"><div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1200px;"><div class="owl2-item active" style="width: 370px; margin-right: 30px;"><div class="ltabs-item product-layout">
-										<div class="product-item-container">
+
+								<div class="owl2-stage-outer"><div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1200px;" *ngFor="let ribbon2Item of ribbon2Response">
+									<div class="owl2-item active" style="width: 370px; margin-right: 30px;" *ngFor="let subRibbon2Item of ribbon2Item.ribbons2.ribbon">
+										<div class="ltabs-item product-layout">
+										<div class="product-item-container" >
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="assets/image/demo/shop/resize/J5-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive">
-													<img src="assets/image/demo/shop/resize/J5-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
+													<img src="https://s3-eu-west-1.amazonaws.com{{subRibbon2Item.imageurl}}" alt="Apple Cinema 30&quot;" class="img-responsive">
+													<img src="https://s3-eu-west-1.amazonaws.com{{subRibbon2Item.imageurl}}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
@@ -107,7 +107,7 @@
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Cupim Bris</a></h4>		
+													<h4><a (click)="onClick(subRibbon2Item.advertitemcode)">Cupim Bris</a></h4>		
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -131,82 +131,21 @@
 												  </div>
 											</div><!-- right block -->
 										</div>
-									</div></div><div class="owl2-item active" style="width: 370px; margin-right: 30px;"><div class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img src="assets/image/demo/shop/resize/m3-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive">
-													<img src="assets/image/demo/shop/resize/m3-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
-												</div>
-												<!--New Label-->
-												<span class="label label-new">New</span>
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" href="quickview.html">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a href="product.html">Cisi Chicken	</a></h4>		
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-														</div>
-													</div>
-																		
-													<div class="price">
-														<span class="price-new">$59.00</span> 
-													</div>
-												</div>
-												
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="" onclick="cart.add('42', '1');" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('42');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="" onclick="compare.add('42');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
-										</div>
-									</div></div><div class="owl2-item active" style="width: 370px; margin-right: 30px;"><div class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img src="assets/image/demo/shop/resize/B9-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive">
-													<img src="assets/image/demo/shop/resize/B9-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
-												</div>
-												<!--Sale Label-->
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" href="quickview.html">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a href="product.html">Bint Beef</a></h4>		
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-														</div>
-													</div>
-																		
-													<div class="price">
-														<span class="price-new">$97.00</span> 
-													</div>
-												</div>
-												
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="" onclick="cart.add('42', '1');" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('42');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="" onclick="compare.add('42');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
-										</div>
-									</div></div></div></div><div class="owl2-controls"><div class="owl2-nav"><div class="owl2-prev" style=""></div><div class="owl2-next" style=""></div></div><div class="owl2-dots" style="display: none;"></div></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="owl2-controls">
+							<div class="owl2-nav">
+								<div class="owl2-prev" style="">
+								</div>
+								<div class="owl2-next" style="">
+								</div>
+							</div>
+							<div class="owl2-dots" style="display: none;">
+							</div>
+						</div>
+					</div>
 								
 							</div>
 							<div class="ltabs-items items-category-18 grid" data-total="11">
@@ -243,14 +182,14 @@
             </div>
             <div class="ltabs-items-container">
               <!--Begin Items-->
-              <div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
-                <div class="ltabs-items-inner ltabs-slider ">
+              <div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10" *ngFor="let ribbon1Item of ribbon1Response">
+                <div class="ltabs-items-inner ltabs-slider " *ngFor="let subRibbon1Item of ribbon1Item.ribbons1.ribbon">
                   <div class="ltabs-item product-layout">
                     <div class="product-item-container">
                       <div class="left-block">
                         <div class="product-image-container second_img ">
-                          <img src="assets/image/demo/shop/resize/w1-270x270.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                          <img src="assets/image/demo/shop/resize/w1-270x270.jpg"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                          <img src="https://s3-eu-west-1.amazonaws.com{{subRibbon1Item.imageurl}}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
+                          <img src="https://s3-eu-west-1.amazonaws.com{{subRibbon1Item.imageurl}}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
                         </div>
                         
                         <!--full quick view block-->
@@ -299,12 +238,15 @@
 									<div class="ltabs-items-inner ltabs-slider  owl2-carousel owl2-theme owl2-loaded">
 											
 										
-									<div class="owl2-stage-outer"><div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1200px;"><div class="owl2-item active" style="width: 570px; margin-right: 30px;"><div class="ltabs-item product-layout">
+									<div class="owl2-stage-outer">
+										<div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1200px;" *ngFor="let ribbon3item of ribbon3Response">
+										<div class="owl2-item active" style="width: 570px; margin-right: 30px;" *ngFor="let subItemribbon3item of ribbon3item.ribbons3.ribbon">
+											<div class="ltabs-item product-layout">
 											<div class="product-item-container">
 												<div class="left-block">
 													<div class="product-image-container second_img ">
-														<img src="assets/image/demo/shop/resize/B5-405x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive">
-														<img src="assets/image/demo/shop/resize/B5-405x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
+														<img src="https://s3-eu-west-1.amazonaws.com{{subItemribbon3item.imageurl}}" alt="Apple Cinema 30&quot;" class="img-responsive">
+														<img src="https://s3-eu-west-1.amazonaws.com{{subItemribbon3item.imageurl}}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
 													</div>
 													
 													<!--full quick view block-->
@@ -336,46 +278,19 @@
 													  </div>
 												</div><!-- right block -->
 											</div>
-										</div></div><div class="owl2-item active" style="width: 570px; margin-right: 30px;"><div class="ltabs-item product-layout">
-											<div class="product-item-container">
-												<div class="left-block">
-													<div class="product-image-container second_img ">
-														<img src="assets/image/demo/shop/resize/B5-405x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive">
-														<img src="assets/image/demo/shop/resize/B5-405x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
-													</div>
-													<!--Sale Label-->
-													<span class="label label-sale">-15%</span>
-													<!--full quick view block-->
-													<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" href="quickview.html">  Quickview</a>
-													<!--end full quick view block-->
+										</div>
+									</div>
+									 </div>
+									</div>
+										<div class="owl2-controls">
+											<div class="owl2-nav">
+												<div class="owl2-prev" style="">
+												</div><div class="owl2-next" style="">
 												</div>
-												<div class="right-block">
-													<div class="caption">
-														<h4><a href="product.html">Cupim Bris</a></h4>		
-														<div class="ratings">
-															<div class="rating-box">
-																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-															</div>
-														</div>
-																			
-														<div class="price">
-															<span class="price-new">$50.00</span> 
-															<span class="price-old">$62.00</span>		 
-														</div>
-													</div>
-													
-													  <div class="button-group">
-														<button class="addToCart" type="button" data-toggle="tooltip" title="" onclick="cart.add('42', '1');" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-														<button class="wishlist" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('42');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i></button>
-														<button class="compare" type="button" data-toggle="tooltip" title="" onclick="compare.add('42');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
-													  </div>
-												</div><!-- right block -->
 											</div>
-										</div></div></div></div><div class="owl2-controls"><div class="owl2-nav"><div class="owl2-prev" style=""></div><div class="owl2-next" style=""></div></div><div class="owl2-dots" style="display: none;"></div></div></div>
+											<div class="owl2-dots" style="display: none;"></div>
+										</div>
+									</div>
 									
 								</div>
 								<div class="ltabs-items items-category-18 grid" data-total="11">
