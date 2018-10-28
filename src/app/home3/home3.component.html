@@ -16,8 +16,8 @@
               <div class="yt-content-slider yt-content-slider--arrow1"  data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
                 <div class="yt-content-slide" *ngFor="let slideitem of sliderResponse" >
                   <div  *ngFor="let subslideitem of slideitem.sliders.slider">
-										<a href="https://{{subslideitem.linkurl}}">
-											<img src="https://{{subslideitem.imageurl}}" alt="slider1" class="img-responsive"></a></div> 
+										<a href="https://s3-eu-west-1.amazonaws.com/{{subslideitem.linkurl}}">
+											<img src="https://s3-eu-west-1.amazonaws.com/{{subslideitem.imageurl}}" alt="slider1" class="img-responsive"></a></div> 
                 </div>
               </div>
               <div class="loadeding"></div>
@@ -34,7 +34,7 @@
             <div class="banners">
               <div>
 								 <a (click)="onClick(subsidebarItem.advertitemcode)" > <!-- href="https://{{subsidebarItem.linkurl}}" -->
-									<img src="https://{{subsidebarItem.imageurl}}" alt="left-image">
+									<img src="https://s3-eu-west-1.amazonaws.com/{{subsidebarItem.imageurl}}" alt="left-image">
 								</a>
               </div>
             </div>
