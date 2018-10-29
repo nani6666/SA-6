@@ -2,8 +2,9 @@
 <div class="main-container container">
 		<ul class="breadcrumb">
 			<li><a href="JavaScript:void(0);"><i class="fa fa-home"></i></a></li>
-			<li><a href="JavaScript:void(0);">Smartphone & Tablets</a></li>
-			<li><a href="JavaScript:void(0);">Bint Beef</a></li>
+			<li><a href="JavaScript:void(0);">{{sectorName}}</a></li>
+			<li><a href="JavaScript:void(0);">{{industryName}}</a></li>
+			<li><a href="JavaScript:void(0);">{{productName}}</a></li>
 			
 		</ul>
 		
@@ -19,26 +20,46 @@
 									<img itemprop="image" class="product-image-zoom" src="assets/image/demo/shop/product/J9.jpg" data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
 								</div>
 								<a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
-								<div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
-									<a data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg" title="Bint Beef">
-										<img src="assets/image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
-									</a>
-									<a data-index="1" class="img thumbnail " data-image="image/demo/shop/product/J6.jpg" title="Bint Beef">
-										<img src="assets/image/demo/shop/product/J6.jpg" title="Bint Beef" alt="Bint Beef">
-									</a>
-									<a data-index="2" class="img thumbnail " data-image="image/demo/shop/product/J5.jpg" title="Bint Beef">
-										<img src="assets/image/demo/shop/product/J5.jpg" title="Bint Beef" alt="Bint Beef">
-									</a>
-									<a data-index="3" class="img thumbnail " data-image="image/demo/shop/product/J4.jpg" title="Bint Beef">
-										<img src="assets/image/demo/shop/product/J4.jpg" title="Bint Beef" alt="Bint Beef">
-									</a>
+								<div _ngcontent-c3="" class="owl-theme owl-loaded owl-drag full_slider owl2-carousel owl2-theme owl2-loaded" id="thumb-slider">
+									<div class="owl2-stage-outer">
+										<div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 640px;">
+											<div class="owl2-item active" style="width: 150px; margin-right: 10px;">
+												<a _ngcontent-c3="" class="img thumbnail  active" data-image="image/demo/shop/product/J9.jpg" data-index="0" title="Bint Beef">
+													<img _ngcontent-c3="" alt="Bint Beef" src="assets/image/demo/shop/product/J9.jpg" title="Bint Beef">
+												</a>
+												</div>
+												<div class="owl2-item active" style="width: 150px; margin-right: 10px;">
+													<a _ngcontent-c3="" class="img thumbnail " data-image="image/demo/shop/product/J6.jpg" data-index="1" title="Bint Beef">
+														<img _ngcontent-c3="" alt="Bint Beef" src="assets/image/demo/shop/product/J6.jpg" title="Bint Beef">
+													</a>
+												</div>
+												<div class="owl2-item active" style="width: 150px; margin-right: 10px;">
+													<a _ngcontent-c3="" class="img thumbnail " data-image="image/demo/shop/product/J5.jpg" data-index="2" title="Bint Beef">
+														<img _ngcontent-c3="" alt="Bint Beef" src="assets/image/demo/shop/product/J5.jpg" title="Bint Beef">
+													</a>
+												</div>
+												<div class="owl2-item" style="width: 150px; margin-right: 10px;">
+													<a _ngcontent-c3="" class="img thumbnail " data-image="image/demo/shop/product/J4.jpg" data-index="3" title="Bint Beef">
+														<img _ngcontent-c3="" alt="Bint Beef" src="assets/image/demo/shop/product/J4.jpg" title="Bint Beef">
+													</a>
+												</div>
+											</div>
+										</div>
+										<div class="owl2-controls">
+										  <div class="owl2-nav">
+											  <div class="owl2-prev" style="">prev</div>
+											  <div class="owl2-next" style="">next</div>
+										  </div>				
+									  <div class="owl2-dots" style="display: none;"></div>
+										
+									</div>
 								</div>
 								
 							</div>
 
 							<div class="content-product-right col-sm-6 col-xs-12">
 								<div class="title-product">
-									<h1>Bint Beef</h1>
+									<h1>{{productName}}</h1>
 								</div>
 								<!-- Review ---->
 								<div class="box-review form-group">
@@ -58,10 +79,13 @@
 
 								<div class="product-label form-group">
 									<div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-										<span class="price-new" itemprop="price">$114.00</span>
-										<span class="price-old">$122.00</span>
+										<span class="price-new" itemprop="price">{{ price | currency:"CAD":"symbol-narrow" }}</span>
+										<span class="price-old">{{ 122.00 | currency:"CAD":"symbol-narrow" }}</span>
 									</div>
-									<div class="stock"><span>Availability:</span> <span class="status-stock">In Stock</span></div>
+									<div class="stock"><span>Availability:</span> 
+										<span *ngIf="availability" class="status-stock">In Stock</span>
+										<span *ngIf="!availability" class="noStock"> No Stock </span>
+									</div>
 								</div>
 
 								<div class="product-box-desc">
@@ -69,7 +93,7 @@
 										<div class="price-tax"><span>Ex Tax:</span> $60.00</div>
 										<div class="reward"><span>Price in reward points:</span> 400</div>
 										<div class="brand"><span>Brand:</span><a href="JavaScript:void(0);">Apple</a>		</div>
-										<div class="model"><span>Product Code:</span> Product 15</div>
+										<div class="model"><span>Product Code:</span> {{productCode}}</div>
 										<div class="reward"><span>Reward Points:</span> 100</div>
 									</div>
 								</div>
@@ -77,33 +101,9 @@
 
 								<div id="product">
 									<h4>Available Options</h4>
-									<div class="image_option_type form-group required">
-										<label class="control-label">Colors</label>
-										<ul class="product-options clearfix"id="input-option231">
-											<li class="radio">
-												<label>
-													<input class="image_radio" type="radio" name="option[231]" value="33"> 
-													<img src="assets/image/demo/colors/blue.jpg" data-original-title="blue +$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-													<label> </label>
-												</label>
-											</li>
-											<li class="radio">
-												<label>
-													<input class="image_radio" type="radio" name="option[231]" value="34"> 
-													<img src="assets/image/demo/colors/brown.jpg" data-original-title="brown -$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-													<label> </label>
-												</label>
-											</li>
-											<li class="radio">
-												<label>
-													<input class="assets/image_radio" type="radio" name="option[231]" value="35"> <img src="assets/image/demo/colors/green.jpg"
-													data-original-title="green +$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-													<label> </label>
-												</label>
-											</li>
-											<li class="selected-option">
-											</li>
-										</ul>
+									<div class="image_option_type form-group required" *ngFor="let spec of productSpecs">
+										<span *ngIf="spec.Name == 'COLOR'"><label class="control-label">Colors</label> {{spec.Value}}</span>
+										<span *ngIf="spec.Name == 'Available sizes'"><label class="control-label">Available sizes</label> {{spec.Value}}</span>
 									</div>
 									
 									<div class="box-checkbox form-group required">
