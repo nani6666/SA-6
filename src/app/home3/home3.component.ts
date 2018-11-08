@@ -9,16 +9,17 @@ import { Router } from '@angular/router';
 })
 export class Home3Component implements OnInit {
   slideConfig = {
-  "slidesToShow": 1, "slidesToScroll": 1,
+  'slidesToShow': 1, 'slidesToScroll': 1,
   enabled: true,
   autoplay: true,
   draggable: true,
-  dots:true,
+  dots: true,
   arrows: true
 };
 
   slideIndex: any;
   dotsLength: any;
+  defaultsAdvertsResponse: any;
   advertsmainresponse: any;
   sliderResponse: any;
   stripResponse: any;
@@ -31,9 +32,7 @@ export class Home3Component implements OnInit {
 
   ngOnInit() {
     this.getAdverts();
-    // this.slideIndex = 1;
-    // this.showSlides(this.slideIndex);
-    // this.currentSlide(this.slideIndex);
+    this.getDefaultsData();
   }
 
   public getAdverts() {
@@ -46,8 +45,42 @@ export class Home3Component implements OnInit {
    this._apiService.postApiResponse('i4gorigin.advert.main/getAllAvailableAdvertsSectionsForMain',
    advertsRequestData).subscribe(postApiData => {
      if (postApiData) {
-      this.dataBinding(postApiData);
+      this.advertsmainresponse = postApiData.main.adverts.advert;
+      this.advertsmainresponse.forEach(element => {
+       if (element.sectionheading == 'STRIP') {
+        this.stripResponse   = this.advertsmainresponse.slice(0, 1);
+       } else {
+        this.stripResponse   = this.defaultsAdvertsResponse.slice(0, 1);
+       }
+       if (element.sectionheading == 'SLIDER') {
+        this.sliderResponse  = this.advertsmainresponse.slice(1, 2);
+       } else {
+        this.sliderResponse  = this.defaultsAdvertsResponse.slice(1, 2);
+       }
+       if (element.sectionheading == 'SIDEBAR') {
+        this.sidebarResponse = this.advertsmainresponse.slice(2, 3);
+       } else {
+        this.sidebarResponse = this.defaultsAdvertsResponse.slice(2, 3);
+       }
+       if (element.sectionheading == 'RIBBON1') {
+        this.ribbon1Response = this.advertsmainresponse.slice(3, 4);
+       } else {
+        this.ribbon1Response = this.defaultsAdvertsResponse.slice(3, 4);
+       }
+       if (element.sectionheading == 'RIBBON2') {
+        this.ribbon2Response = this.advertsmainresponse.slice(4, 5);
+       } else {
+        this.ribbon2Response = this.defaultsAdvertsResponse.slice(4, 5);
+       }
+       if (element.sectionheading == 'RIBBON3') {
+        this.ribbon3Response = this.advertsmainresponse.slice(5, 6);
+       } else {
+        this.ribbon3Response = this.defaultsAdvertsResponse.slice(5, 6);
+       }
+      });
+      // this.dataBinding(postApiData.main);
      } else {
+
     }
    }, error => {
    });
@@ -56,49 +89,12 @@ export class Home3Component implements OnInit {
 public getDefaultsData() {
   this._apiService.getApiResponse('i4gorigin.advert.main/getDefaultAdvertsForAllSections').subscribe(getdata => {
     if (getdata) {
-      this.dataBinding(getdata);
+      this.defaultsAdvertsResponse = getdata.aDefault.adverts.advert;
     }
    }, error => {
    });
 }
 
-  public dataBinding(data) {
-       if (data.main.adverts.advert) {
-       this.advertsmainresponse = data.main.adverts.advert;
-       } else {
-        this.getDefaultsData();
-       }
-       if (this.advertsmainresponse.slice(0, 1)) {
-        this.stripResponse   = this.advertsmainresponse.slice(0, 1);
-       } else {
-        this.getDefaultsData();
-       }
-       if (this.advertsmainresponse.slice(1, 2)) {
-        this.sliderResponse  = this.advertsmainresponse.slice(1, 2);
-       } else {
-        this.getDefaultsData();
-       }
-       if (this.advertsmainresponse.slice(2, 3)) {
-        this.sidebarResponse = this.advertsmainresponse.slice(2, 3);
-       } else {
-        this.getDefaultsData();
-       }
-       if (this.advertsmainresponse.slice(3, 4)) {
-        this.ribbon1Response = this.advertsmainresponse.slice(3, 4);
-       } else {
-        this.getDefaultsData();
-       }
-       if (this.advertsmainresponse.slice(4, 5)) {
-        this.ribbon2Response = this.advertsmainresponse.slice(4, 5);
-       } else {
-        this.getDefaultsData();
-       }
-       if (this.advertsmainresponse.slice(5, 6)) {
-        this.ribbon3Response = this.advertsmainresponse.slice(5, 6);
-       } else {
-        this.getDefaultsData();
-       }
-  }
 
   onClick (param) {
     this.router.navigate(['/product', 'product'], {
