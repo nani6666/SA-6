@@ -9,10 +9,10 @@ import {RestapisService} from '../services/restapis.service';
 export class ProductComponent implements OnInit {
   id: number;
   private sub: any;
-  price:any;
+  price: any;
   productName: any;
-  productCode:any;
-  specs: any;
+  productCode: any;
+  productImages: any;
   sectorName: any;
   industryName: any;
   availability: any;
@@ -33,24 +33,23 @@ export class ProductComponent implements OnInit {
       };
 
     this._apiService.postApiResponse('/i4gorigin.listing/getPageProductDetail', productDetial).subscribe( data => {
-      if(data){
+      if (data) {
        this.productName = data.Product.ProductName;
        this.sectorName = data.Product.SectorName;
        this.industryName = data.Product.IndustryName;
        this.productSpecs = data.Product.Specs.Spec;
-       if(data.Product.SampleAvailability == 'Y'){
+       this.productImages = data.Product.Images.url;
+       if (data.Product.SampleAvailability == 'Y') {
         this.availability = true;
        } else {
         this.availability = false;
        }
-       
        this.productCode = data.Product.I4gProductCode;
-       if(data.Product.Price == "" || data.Product.Price == undefined){
+       if (data.Product.Price == '' || data.Product.Price == undefined) {
         this.price = 0.00;
        } else {
         this.price = data.Product.Price;
        }
-       
       }
       console.log(data);
     }, error => {

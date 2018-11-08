@@ -18,11 +18,15 @@ export class HeaderComponent implements OnInit {
   mainLogo: any;
   mainsearch: any;
   mainLeftItems: any;
+  productSectors: any;
+  serviceSectors: any;
 
   constructor(private _apiService: RestapisService) { }
 
   ngOnInit() {
    this.headerdata();
+   this.productSectorsData();
+   this.serviceSectorsData();
   }
   public headerdata() {
     this._apiService.getApiResponse('i4gorigin.advert.main/getHeaderStripProperties').subscribe( data => {
@@ -41,5 +45,24 @@ export class HeaderComponent implements OnInit {
      }, err => {
        console.log(err);
      });
+  }
+
+  public productSectorsData() {
+    this._apiService.getApiResponse('i4gorigin.listing/getProductSectorsAndIndustriesUrls').subscribe( data => {
+      if (data) {
+        this.productSectors = data.Product.Sector;
+       }
+    }, err => {
+      console.log(err);
+    });
+  }
+  public serviceSectorsData() {
+    this._apiService.getApiResponse('i4gorigin.listing/getServiceSectorsAndIndustriesUrls ').subscribe( data => {
+      if (data) {
+        this.serviceSectors = data.Service.Sector;
+       }
+    }, err => {
+      console.log(err);
+    });
   }
 }

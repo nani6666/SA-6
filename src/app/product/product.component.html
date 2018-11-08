@@ -17,32 +17,17 @@
 						<div class="row">
 							<div class="content-product-left class-honizol col-sm-6 col-xs-12 ">
 								<div class="large-image  ">
-									<img itemprop="image" class="product-image-zoom" src="assets/image/demo/shop/product/J9.jpg" data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
+									<img itemprop="image" class="product-image-zoom" src="{{productImages | slice:0:1}}" data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
 								</div>
-								<a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
+								<a class="thumb-video pull-left" href="{{productImages | slice:1:2}}"><i class="fa fa-youtube-play"></i></a>
 								<div _ngcontent-c3="" class="owl-theme owl-loaded owl-drag full_slider owl2-carousel owl2-theme owl2-loaded" id="thumb-slider">
 									<div class="owl2-stage-outer">
 										<div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 640px;">
-											<div class="owl2-item active" style="width: 150px; margin-right: 10px;">
-												<a _ngcontent-c3="" class="img thumbnail  active" data-image="image/demo/shop/product/J9.jpg" data-index="0" title="Bint Beef">
-													<img _ngcontent-c3="" alt="Bint Beef" src="assets/image/demo/shop/product/J9.jpg" title="Bint Beef">
-												</a>
-												</div>
-												<div class="owl2-item active" style="width: 150px; margin-right: 10px;">
-													<a _ngcontent-c3="" class="img thumbnail " data-image="image/demo/shop/product/J6.jpg" data-index="1" title="Bint Beef">
-														<img _ngcontent-c3="" alt="Bint Beef" src="assets/image/demo/shop/product/J6.jpg" title="Bint Beef">
-													</a>
-												</div>
-												<div class="owl2-item active" style="width: 150px; margin-right: 10px;">
-													<a _ngcontent-c3="" class="img thumbnail " data-image="image/demo/shop/product/J5.jpg" data-index="2" title="Bint Beef">
-														<img _ngcontent-c3="" alt="Bint Beef" src="assets/image/demo/shop/product/J5.jpg" title="Bint Beef">
-													</a>
-												</div>
-												<div class="owl2-item" style="width: 150px; margin-right: 10px;">
-													<a _ngcontent-c3="" class="img thumbnail " data-image="image/demo/shop/product/J4.jpg" data-index="3" title="Bint Beef">
-														<img _ngcontent-c3="" alt="Bint Beef" src="assets/image/demo/shop/product/J4.jpg" title="Bint Beef">
-													</a>
-												</div>
+											   <div class="owl2-item active" style="width: 150px; margin-right: 10px;" *ngFor="let productItem of productImages">
+												 <a _ngcontent-c3="" class="img thumbnail  active" data-image="image/demo/shop/product/J9.jpg" data-index="0" title="Bint Beef">
+													<img _ngcontent-c3="" alt="Bint Beef" src="{{productItem}}" title="Track Suite">
+												 </a>
+											   </div>
 											</div>
 										</div>
 										<div class="owl2-controls">
