@@ -7,6 +7,8 @@ import { FooterComponent } from './footer/footer.component';
 import { Home3Component } from './home3/home3.component';
 import { ProductComponent } from './product/product.component';
 import { HttpClientModule } from '@angular/common/http';
+// Import your library
+import { SlickModule } from 'ngx-slick';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     routing,
-    HttpClientModule
+    HttpClientModule,
+    SlickModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
