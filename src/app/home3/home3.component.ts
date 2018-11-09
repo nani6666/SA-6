@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RestapisService} from '../services/restapis.service';
 import { Router } from '@angular/router';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-home3',
@@ -32,7 +33,7 @@ export class Home3Component implements OnInit {
 
   ngOnInit() {
     this.getAdverts();
-    this.getDefaultsData();
+    
   }
 
   public getAdverts() {
@@ -46,43 +47,45 @@ export class Home3Component implements OnInit {
    advertsRequestData).subscribe(postApiData => {
      if (postApiData) {
       this.advertsmainresponse = postApiData.main.adverts.advert;
-      this.advertsmainresponse.forEach(element => {
-       if (element.sectionheading == 'STRIP') {
-        this.stripResponse   = this.advertsmainresponse.slice(0, 1);
-       } else {
-        this.stripResponse   = this.defaultsAdvertsResponse.slice(0, 1);
-       }
-       if (element.sectionheading == 'SLIDER') {
-        this.sliderResponse  = this.advertsmainresponse.slice(1, 2);
-       } else {
-        this.sliderResponse  = this.defaultsAdvertsResponse.slice(1, 2);
-       }
-       if (element.sectionheading == 'SIDEBAR') {
-        this.sidebarResponse = this.advertsmainresponse.slice(2, 3);
-       } else {
-        this.sidebarResponse = this.defaultsAdvertsResponse.slice(2, 3);
-       }
-       if (element.sectionheading == 'RIBBON1') {
-        this.ribbon1Response = this.advertsmainresponse.slice(3, 4);
-       } else {
-        this.ribbon1Response = this.defaultsAdvertsResponse.slice(3, 4);
-       }
-       if (element.sectionheading == 'RIBBON2') {
-        this.ribbon2Response = this.advertsmainresponse.slice(4, 5);
-       } else {
-        this.ribbon2Response = this.defaultsAdvertsResponse.slice(4, 5);
-       }
-       if (element.sectionheading == 'RIBBON3') {
-        this.ribbon3Response = this.advertsmainresponse.slice(5, 6);
-       } else {
-        this.ribbon3Response = this.defaultsAdvertsResponse.slice(5, 6);
-       }
+      // Array Sorted 
+      if(this.advertsmainresponse.length === 6){
+        let sortedMainArray = this.advertsmainresponse.sort((n1,n2) => {
+          if (n1.sectionheading > n2.sectionheading) {
+              return 1;
+          }
+          if (n1.sectionheading < n2.sectionheading) {
+              return -1;
+          }
+          return 0;
+          });
+      // sorted array itteration
+      sortedMainArray.forEach(element => {
+        if (element.sectionheading == 'RIBBON1') {
+          this.ribbon1Response = element.ribbons1.ribbon;
+         } 
+         if (element.sectionheading == 'RIBBON2') {
+          this.ribbon2Response = element.ribbons2.ribbon;
+         } 
+         if (element.sectionheading == 'RIBBON3') {
+          this.ribbon3Response = element.ribbons3.ribbon;
+         } 
+         if (element.sectionheading == 'SIDEBAR') {
+        this.sidebarResponse = element.sidebars.sidebar;
+         } 
+         if (element.sectionheading == 'SLIDER') {
+        this.sliderResponse  = element.sliders.slider;
+         } 
+        if (element.sectionheading == 'STRIP') {
+        this.stripResponse   = element.strips.strip;
+         } 
       });
-      // this.dataBinding(postApiData.main);
-     } else {
-
-    }
+      } else {
+        this.getDefaultsData();
+      }
+     }
    }, error => {
+    console.log("Error occured");
+     console.log(error);
    });
   }
 
@@ -90,6 +93,38 @@ public getDefaultsData() {
   this._apiService.getApiResponse('i4gorigin.advert.main/getDefaultAdvertsForAllSections').subscribe(getdata => {
     if (getdata) {
       this.defaultsAdvertsResponse = getdata.aDefault.adverts.advert;
+      // Array Sorted 
+       const sortedArray =  this.defaultsAdvertsResponse.sort((n1,n2) => {
+      if (n1.sectionheading > n2.sectionheading) {
+          return 1;
+      }
+      if (n1.sectionheading < n2.sectionheading) {
+          return -1;
+      }
+      return 0;
+      });
+      //  Sorted Array itteration
+      this.defaultsAdvertsResponse.forEach(element => {
+        
+         if (element.sectionheading == 'RIBBON1') {
+         this.ribbon1Response = element.ribbons1.ribbon;
+        } 
+        if (element.sectionheading == 'RIBBON2') {
+         this.ribbon2Response = element.ribbons2.ribbon;
+        } 
+        if (element.sectionheading == 'RIBBON3') {
+         this.ribbon3Response = element.ribbons3.ribbon;
+        } 
+        if (element.sectionheading == 'SIDEBAR') {
+          this.sidebarResponse = element.sidebars.sidebar;
+         } 
+        if (element.sectionheading == 'SLIDER') {
+         this.sliderResponse  = element.sliders.sliders;
+        } 
+        if (element.sectionheading == 'STRIP') {
+         this.stripResponse   = element.strips.strip
+        }
+       });
     }
    }, error => {
    });
@@ -102,33 +137,5 @@ public getDefaultsData() {
     });
   }
 
-
-//  plusSlides(n) {
-//   this.showSlides(this.slideIndex += n);
-// }
-
-//  currentSlide( n ) {
-//   this.showSlides(this.slideIndex =  n );
-// }
-
-//  showSlides(n) {
-//   let i;
-//   const slides = document.getElementsByClassName('mySlides');
-//   const dots = document.getElementsByClassName('dot');
-//   if ( n > slides.length) {
-//     this.slideIndex = 1 ;
-//   }
-//   if (n < 1) {
-//     this.slideIndex = slides.length ;
-//   }
-//   for (i = 0; i < slides.length; i++) {
-//     (<any>slides[i]).style.display = 'none';
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//       dots[i].className = dots[i].className.replace(' active', '');
-//   }
-//   (<any> slides[this.slideIndex - 1]).style.display = 'block';
-//   dots[this.slideIndex - 1].className += ' active';
-// }
 
 }

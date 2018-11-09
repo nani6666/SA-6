@@ -5,12 +5,12 @@
     <div class="row">
       <div id="yt_header_left" class="col-md-9 col-md-12">
 		   <!-- You can now use your library component in app.component.html -->
-		   <div  *ngFor="let slideitem of sliderResponse">
+		   <div >
 
 		   <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-				<div ngxSlickItem *ngFor="let subslideitem of slideitem.sliders.slider ; let slideindex=index;" class="slide">
-						<a (click)="onClick(subslideitem.advertitemcode)">
-					  <img src="https://s3-eu-west-1.amazonaws.com/{{subslideitem.imageurl}}" alt="" width="100%">
+				<div ngxSlickItem *ngFor="let slideitem of sliderResponse; let slideindex=index;" class="slide">
+						<a (click)="onClick(slideitem.advertitemcode)">
+					  <img src="https://s3-eu-west-1.amazonaws.com/{{slideitem.imageurl}}" alt="" width="100%">
 					</a>
 				</div>
 			</ngx-slick>
@@ -31,13 +31,13 @@
 								<span class="dot" (click)="currentSlide(x + 1)" ></span> 
 							</div> -->
       </div>
-      <div id="yt_header_right" class="col-md-3 hidden-sm hidden-xs" *ngFor="let sidebarItem of sidebarResponse">
-        <div class="module" *ngFor="let subsidebarItem of sidebarItem.sidebars.sidebar">
+      <div id="yt_header_right" class="col-md-3 hidden-sm hidden-xs" >
+        <div class="module" *ngFor="let sidebarItem of sidebarResponse">
           <div class="modcontent clearfix">
             <div class="banners">
               <div>
-								 <a (click)="onClick(subsidebarItem.advertitemcode)" > <!-- href="https://{{subsidebarItem.linkurl}}" -->
-									<img src="https://s3-eu-west-1.amazonaws.com/{{subsidebarItem.imageurl}}" alt="left-image">
+								 <a (click)="onClick(sidebarItem.advertitemcode)" > <!-- href="https://{{subsidebarItem.linkurl}}" -->
+									<img src="https://s3-eu-west-1.amazonaws.com/{{sidebarItem.imageurl}}" alt="left-image">
 								</a>
               </div>
             </div>
@@ -51,12 +51,12 @@
 <section class="so-spotlight1 ">
   <div class="container">
     <div class="row">
-			<div id="yt_header_right" class="col-md-12 hidden-sm hidden-xs" *ngFor="let stripItem of stripResponse">
-        <div class="module" *ngFor="let subStrip of stripItem.strips.strip">
+			<div id="yt_header_right" class="col-md-12 hidden-sm hidden-xs" >
+        <div class="module" *ngFor="let stripItem of stripResponse">
           <div class="modcontent clearfix">
             <div class="banners">
               <div>
-                <a (click)="onClick(subStrip.advertitemcode)"><img src="https://s3-eu-west-1.amazonaws.com{{subStrip.imageurl}}" alt="left-image"></a>
+                <a (click)="onClick(stripItem.advertitemcode)"><img src="https://s3-eu-west-1.amazonaws.com{{stripItem.imageurl}}" alt="left-image"></a>
               </div>
             </div>
           </div>
@@ -93,19 +93,19 @@
 							<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
 								<div class="ltabs-items-inner ltabs-slider  owl2-carousel owl2-theme owl2-loaded">
 
-								<div class="owl2-stage-outer"><div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1200px;" *ngFor="let ribbon2Item of ribbon2Response">
-									<div class="owl2-item active" style="width: 370px; margin-right: 30px;" *ngFor="let subRibbon2Item of ribbon2Item.ribbons2.ribbon">
+								<div class="owl2-stage-outer"><div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1200px;" >
+									<div class="owl2-item active" style="width: 370px; margin-right: 30px;" *ngFor="let ribbon2Item of ribbon2Response">
 										<div class="ltabs-item product-layout">
 										<div class="product-item-container" >
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="https://s3-eu-west-1.amazonaws.com{{subRibbon2Item.imageurl}}" alt="Apple Cinema 30&quot;" class="img-responsive">
-													<img src="https://s3-eu-west-1.amazonaws.com{{subRibbon2Item.imageurl}}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
+													<img src="https://s3-eu-west-1.amazonaws.com{{ribbon2Item.imageurl}}" alt="Apple Cinema 30&quot;" class="img-responsive">
+													<img src="https://s3-eu-west-1.amazonaws.com{{ribbon2Item.imageurl}}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" (click)="onClick(subRibbon2Item.advertitemcode)">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" (click)="onClick(ribbon2Item.advertitemcode)">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
@@ -185,18 +185,18 @@
             </div>
             <div class="ltabs-items-container">
               <!--Begin Items-->
-              <div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10" *ngFor="let ribbon1Item of ribbon1Response">
-                <div class="ltabs-items-inner ltabs-slider " *ngFor="let subRibbon1Item of ribbon1Item.ribbons1.ribbon">
+              <div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10" >
+                <div class="ltabs-items-inner ltabs-slider " *ngFor="let ribbon1Item of ribbon1Response">
                   <div class="ltabs-item product-layout">
                     <div class="product-item-container">
                       <div class="left-block">
                         <div class="product-image-container second_img ">
-                          <img src="https://s3-eu-west-1.amazonaws.com{{subRibbon1Item.imageurl}}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-                          <img src="https://s3-eu-west-1.amazonaws.com{{subRibbon1Item.imageurl}}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+                          <img src="https://s3-eu-west-1.amazonaws.com{{ribbon1Item.imageurl}}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
+                          <img src="https://s3-eu-west-1.amazonaws.com{{ribbon1Item.imageurl}}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
                         </div>
                         
                         <!--full quick view block-->
-                        <a class="quickview iframe-link visible-lg" (click)="onClick(subRibbon1Item.advertitemcode)" data-fancybox-type="iframe" >  Quickview</a>
+                        <a class="quickview iframe-link visible-lg" (click)="onClick(ribbon1Item.advertitemcode)" data-fancybox-type="iframe" >  Quickview</a>
                         <!--end full quick view block-->
                       </div>
                     </div>
@@ -242,18 +242,18 @@
 											
 										
 									<div class="owl2-stage-outer">
-										<div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1200px;" *ngFor="let ribbon3item of ribbon3Response">
-										<div class="owl2-item active" style="width: 570px; margin-right: 30px;" *ngFor="let subItemribbon3item of ribbon3item.ribbons3.ribbon">
+										<div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1200px;">
+										<div class="owl2-item active" style="width: 570px; margin-right: 30px;" *ngFor="let ribbon3item of ribbon3Response">
 											<div class="ltabs-item product-layout">
 											<div class="product-item-container">
 												<div class="left-block">
 													<div class="product-image-container second_img ">
-														<img src="https://s3-eu-west-1.amazonaws.com{{subItemribbon3item.imageurl}}" alt="Apple Cinema 30&quot;" class="img-responsive">
-														<img src="https://s3-eu-west-1.amazonaws.com{{subItemribbon3item.imageurl}}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
+														<img src="https://s3-eu-west-1.amazonaws.com{{ribbon3item.imageurl}}" alt="Apple Cinema 30&quot;" class="img-responsive">
+														<img src="https://s3-eu-west-1.amazonaws.com{{ribbon3item.imageurl}}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
 													</div>
 													
 													<!--full quick view block-->
-													<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" (click)="onClick(subItemribbon3item.advertitemcode)">  Quickview</a>
+													<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" (click)="onClick(ribbon3item.advertitemcode)">  Quickview</a>
 													<!--end full quick view block-->
 												</div>
 												<div class="right-block">

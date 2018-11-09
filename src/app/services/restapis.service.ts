@@ -25,7 +25,9 @@ export class RestapisService {
             .pipe(
               map((response: Response) => {
                 return <any>response;
-            })).pipe(catchError((error: any) => error));
+            })).pipe(catchError(error => {
+              return throwError(error);
+            }));
       }
 
       postApiResponse(api, data): Observable<any> {
@@ -35,6 +37,8 @@ export class RestapisService {
                 .pipe(
                   map((response: Response) => {
                     return <any>response;
-                })).pipe(catchError((error: any) => error));
+                })).pipe(catchError(error => {
+                  return throwError(error);
+                }));
           }
 }
