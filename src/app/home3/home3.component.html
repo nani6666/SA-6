@@ -314,4 +314,9 @@
     </div>
   </div>
 </div>
+<div id="snackbar" *ngIf="httpErrorDispaly">
+	{{httpCode}}
+	<a (click)="errorClose();"><span class="close">&#10006;</span></a>
+</div>
+
 <!-- //Main Container -->

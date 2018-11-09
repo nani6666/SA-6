@@ -17,7 +17,8 @@ export class Home3Component implements OnInit {
   dots: true,
   arrows: true
 };
-
+  httpCode: any;
+  httpErrorDispaly: boolean ;
   slideIndex: any;
   dotsLength: any;
   defaultsAdvertsResponse: any;
@@ -29,7 +30,9 @@ export class Home3Component implements OnInit {
   ribbon2Response: any;
   ribbon3Response: any;
 
-  constructor(private _apiService: RestapisService , private router: Router) {}
+  constructor(private _apiService: RestapisService , private router: Router) {
+    this.httpErrorDispaly = false;
+  }
 
   ngOnInit() {
     this.getAdverts();
@@ -40,11 +43,12 @@ export class Home3Component implements OnInit {
     const advertsRequestData = {
       'Advert': {
         'IndianDate': '2018-10-20',
-            'IndianTime': '08:00:00'
+            'IndianTime': '18:00:00'
       }
     };
    this._apiService.postApiResponse('i4gorigin.advert.main/getAllAvailableAdvertsSectionsForMain',
    advertsRequestData).subscribe(postApiData => {
+    this.httpErrorDispaly = false;
      if (postApiData) {
       this.advertsmainresponse = postApiData.main.adverts.advert;
       // Array Sorted 
@@ -84,8 +88,8 @@ export class Home3Component implements OnInit {
       }
      }
    }, error => {
-    console.log("Error occured");
-     console.log(error);
+    this.httpErrorDispaly = true;
+    this.httpCode = error.status + "-" + error.statusText;
    });
   }
 
@@ -126,7 +130,9 @@ public getDefaultsData() {
         }
        });
     }
-   }, error => {
+   },error => {
+    this.httpErrorDispaly = true;
+    this.httpCode = error.status + "-" + error.statusText;
    });
 }
 
@@ -137,5 +143,8 @@ public getDefaultsData() {
     });
   }
 
+   errorClose(){
+    this.httpErrorDispaly = false;
+   }
 
 }
