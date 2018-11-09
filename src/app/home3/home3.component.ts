@@ -43,7 +43,7 @@ export class Home3Component implements OnInit {
     const advertsRequestData = {
       'Advert': {
         'IndianDate': '2018-10-20',
-            'IndianTime': '18:00:00'
+            'IndianTime': '08:00:00'
       }
     };
    this._apiService.postApiResponse('i4gorigin.advert.main/getAllAvailableAdvertsSectionsForMain',
