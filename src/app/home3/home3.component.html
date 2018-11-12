@@ -322,14 +322,13 @@
 
 <!-- //Main Container -->
 
-<!-- <div *ngFor="let adverts of defaultsAdvertsResponse">
-<p *ngIf="adverts.sectionheading == 'STRIP'">{{adverts.sectionheading}}</p>
-<p *ngIf="adverts.sectionheading == 'SLIDER'">{{adverts.sectionheading}}</p>
-<p *ngIf="adverts.sectionheading == 'SIDEBAR'">{{adverts.sectionheading}}</p>
-<p *ngIf="adverts.sectionheading == 'RIBBON1'">{{adverts.sectionheading}}</p>
-<p *ngIf="adverts.sectionheading == 'RIBBON2'">{{adverts.sectionheading}}</p>
-<p *ngIf="adverts.sectionheading == 'RIBBON3'">{{adverts.sectionheading}}</p>
-</div> -->
+<div *ngFor="let adverts of defaultsAdvertsResponse" [ngSwitch]="adverts.sectionheading">
+<p *ngSwitchCase="'STRIP'">{{adverts.sectionheading}}</p>
+<p *ngSwitchCase="'SLIDER'">{{adverts.sectionheading}}</p>
+<p  *ngSwitchCase="'SIDEBAR'">{{adverts.sectionheading}}</p>
+<p *ngSwitchCase="'RIBBON1'" >{{adverts.sectionheading}}</p>
+<p *ngSwitchDefault >{{adverts.sectionheading}}</p>
+</div>
 <div class="container" >
 		<div class="row">
 			<div class="col-md-12">
