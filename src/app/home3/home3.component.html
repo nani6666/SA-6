@@ -99,6 +99,7 @@
 										<div class="product-item-container" >
 											<div class="left-block">
 												<div class="product-image-container second_img ">
+														<div class="img-box">
 													<img src="https://s3-eu-west-1.amazonaws.com{{ribbon2Item.imageurl}}" alt="Apple Cinema 30&quot;" class="img-responsive">
 													<img src="https://s3-eu-west-1.amazonaws.com{{ribbon2Item.imageurl}}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive">
 												</div>
@@ -314,9 +315,218 @@
     </div>
   </div>
 </div>
-<div id="snackbar" *ngIf="httpErrorDispaly">
+<!-- <div id="snackbar" *ngIf="httpErrorDispaly">
 	{{httpCode}}
 	<a (click)="errorClose();"><span class="close">&#10006;</span></a>
-</div>
+</div> -->
 
 <!-- //Main Container -->
+
+<!-- <div *ngFor="let adverts of defaultsAdvertsResponse">
+<p *ngIf="adverts.sectionheading == 'STRIP'">{{adverts.sectionheading}}</p>
+<p *ngIf="adverts.sectionheading == 'SLIDER'">{{adverts.sectionheading}}</p>
+<p *ngIf="adverts.sectionheading == 'SIDEBAR'">{{adverts.sectionheading}}</p>
+<p *ngIf="adverts.sectionheading == 'RIBBON1'">{{adverts.sectionheading}}</p>
+<p *ngIf="adverts.sectionheading == 'RIBBON2'">{{adverts.sectionheading}}</p>
+<p *ngIf="adverts.sectionheading == 'RIBBON3'">{{adverts.sectionheading}}</p>
+</div> -->
+<div class="container" >
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Trending <b>Products</b></h2>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+				<!-- Carousel indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+				</ol>   
+				<!-- Wrapper for carousel items -->
+				<div class="carousel-inner">
+					<div class="item carousel-item active">
+							<div class="row">
+								<div class="col-sm-3">
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/Stormtrooper_helmets_600_grande.jpg" class="img-responsive img-fluid" alt="">
+										</div>
+										<div class="thumb-content">
+											<h4>Apple iPhone</h4>
+											<p class="item-price"> <span>$349.00</span></p>
+											<div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+											<a href="#" class="btn btn-primary">Add to Cart</a>
+										</div>						
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
+										</div>
+										<div class="thumb-content">
+											<h4>Canon DSLR</h4>
+											<p class="item-price"> <span>$250.00</span></p>
+											<div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+											<a href="#" class="btn btn-primary">Add to Cart</a>
+										</div>						
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
+										</div>
+										<div class="thumb-content">
+											<h4>Google Pixel</h4>
+											<p class="item-price"><span>$418.00</span></p>
+											<div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+											<a href="#" class="btn btn-primary">Add to Cart</a>
+										</div>						
+									</div>
+								</div>	
+								<div class="col-sm-3">
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
+										</div>
+										<div class="thumb-content">
+											<h4>Apple Watch</h4>
+											<p class="item-price"><span>$330.00</span></p>
+											<div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+											<a href="#" class="btn btn-primary">Add to Cart</a>
+										</div>						
+									</div>
+								</div>
+							</div>
+						</div>
+					<div class="item carousel-item">
+						<div class="row">
+							<div class="col-sm-3">
+								<div class="thumb-wrapper">
+									<div class="img-box">
+										<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
+									</div>
+									<div class="thumb-content">
+										<h4>Apple iPhone</h4>
+										<p class="item-price"> <span>$349.00</span></p>
+										<div class="star-rating">
+											<ul class="list-inline">
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+											</ul>
+										</div>
+										<a href="#" class="btn btn-primary">Add to Cart</a>
+									</div>						
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="thumb-wrapper">
+									<div class="img-box">
+										<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
+									</div>
+									<div class="thumb-content">
+										<h4>Canon DSLR</h4>
+										<p class="item-price"> <span>$250.00</span></p>
+										<div class="star-rating">
+											<ul class="list-inline">
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+											</ul>
+										</div>
+										<a href="#" class="btn btn-primary">Add to Cart</a>
+									</div>						
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="thumb-wrapper">
+									<div class="img-box">
+										<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
+									</div>
+									<div class="thumb-content">
+										<h4>Google Pixel</h4>
+										<p class="item-price"><span>$418.00</span></p>
+										<div class="star-rating">
+											<ul class="list-inline">
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+											</ul>
+										</div>
+										<a href="#" class="btn btn-primary">Add to Cart</a>
+									</div>						
+								</div>
+							</div>	
+							<div class="col-sm-3">
+								<div class="thumb-wrapper">
+									<div class="img-box">
+										<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
+									</div>
+									<div class="thumb-content">
+										<h4>Apple Watch</h4>
+										<p class="item-price"><span>$330.00</span></p>
+										<div class="star-rating">
+											<ul class="list-inline">
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+											</ul>
+										</div>
+										<a href="#" class="btn btn-primary">Add to Cart</a>
+									</div>						
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Carousel controls -->
+				<a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+					<i class="fa fa-angle-left"></i>
+				</a>
+				<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+					<i class="fa fa-angle-right"></i>
+				</a>
+			</div>
+			</div>
+		</div>
+	</div>

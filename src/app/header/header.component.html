@@ -14,7 +14,7 @@
 								</a>
 								<ul class="dropdown-menu" *ngFor="let leftItems of topleftItems">
 									<li *ngFor="let subTofleftItems of leftItems.lists.list">
-										<a href="https://{{subTofleftItems.clickurl}}">
+										<a href="https://{{subTofleftItems?.clickurl}}">
 										<img class="image_flag" src="{{subTofleftItems.icon}}" alt="{{subTofleftItems.name}}" title="{{subTofleftItems.name}}" /> {{subTofleftItems.name}} </a>
 									</li>
 								</ul>
@@ -39,7 +39,7 @@
 						<div class="tabBlock" id="TabBlock-1">
 							<ul class="top-link list-inline">
 								<li *ngFor="let rightMainItems of topRightItems" class="account" id="my_account">
-									<a  href="{{rightMainItems.clickurl}}" title="{{rightMainItems.name}}" class="btn btn-xs dropdown-toggle" >
+									<a  href="{{rightMainItems?.clickurl}}" title="{{rightMainItems.name}}" class="btn btn-xs dropdown-toggle" >
 										 <i class="fa" [ngClass]="{'fa-lock': rightMainItems.name === 'Login', 'fa-user': rightMainItems.name === 'Register', 'fa-heart': rightMainItems.name === 'My Wish List'}" ></i> {{rightMainItems.name}} </a>
 								</li>
 							</ul>
@@ -56,7 +56,7 @@
 			<div class="row">
 				<!-- Logo -->
 				<div style="padding-top:5px;" class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-						<a href="{{mainLogo.clickurl}}"><img src="{{mainLogo.image}}" title="Your Store" alt="{{mainLogo.itemtype}}"></a>
+						<a href="{{mainLogo?.clickurl}}"><img src="{{mainLogo?.image}}" title="Your Store" alt="{{mainLogo?.itemtype}}"></a>
 					</div>
 				<!-- //end Logo -->
 				<!-- Search -->
@@ -90,10 +90,10 @@
 					<!-- //Search -->
 				<!-- Main Menu -->
 					<div class="phone-contact col-md-2  hidden-md hidden-sm hidden-xs">
-							<a class="anchor-tag" href="{{mainRightCallNow.clickurl}}">
+							<a class="anchor-tag" href="{{mainRightCallNow?.clickurl}}">
 							  <div class="inner-info">
-								  <strong>{{mainRightCallNow.boldtext}}</strong><br>
-								  <span>{{mainRightCallNow.lighttext}}</span>
+								  <strong>{{mainRightCallNow?.boldtext}}</strong><br>
+								  <span>{{mainRightCallNow?.lighttext}}</span>
 							  </div>
 							</a>
 					</div>
@@ -106,8 +106,8 @@
 							<a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
 								<div class="shopcart">
 									<span class="handle pull-left"></span>
-									<span class="title">{{mainRightShoppingCart.boldtext}}</span>
-									<p class="text-shopping-cart cart-total-full">{{mainRightShoppingCart.lighttext}}</p>
+									<span class="title">{{mainRightShoppingCart?.boldtext}}</span>
+									<p class="text-shopping-cart cart-total-full">{{mainRightShoppingCart?.lighttext}}</p>
 								</div>
 							</a>
 
@@ -117,13 +117,13 @@
 										<tbody>
 											<tr>
 												<td class="text-center" style="width:70px">
-													<a href="{{mainRightShoppingCart.clickurl}}"> <img src="assets/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+													<a href="{{mainRightShoppingCart?.clickurl}}"> <img src="assets/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
 												</td>
-												<td class="text-left"> <a class="cart_product_name" href="{{mainRightShoppingCart.clickurl}}">Filet Mign</a> </td>
+												<td class="text-left"> <a class="cart_product_name" href="{{mainRightShoppingCart ?.clickurl}}">Filet Mign</a> </td>
 												<td class="text-center"> x1 </td>
 												<td class="text-center"> $1,202.00 </td>
 												<td class="text-right">
-													<a href="{{mainRightShoppingCart.clickurl}}" class="fa fa-edit"></a>
+													<a href="{{mainRightShoppingCart?.clickurl}}" class="fa fa-edit"></a>
 												</td>
 												<td class="text-right">
 													<a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
@@ -133,11 +133,11 @@
 												<td class="text-center" style="width:70px">
 													<a href="product.html"> <img src="assets/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
 												</td>
-												<td class="text-left"> <a class="cart_product_name" href="{{mainRightShoppingCart.clickurl}}">Canon EOS 5D</a> </td>
+												<td class="text-left"> <a class="cart_product_name" href="{{mainRightShoppingCart?.clickurl}}">Canon EOS 5D</a> </td>
 												<td class="text-center"> x1 </td>
 												<td class="text-center"> $60.00 </td>
 												<td class="text-right">
-													<a href="{{mainRightShoppingCart.clickurl}}" class="fa fa-edit"></a>
+													<a href="{{mainRightShoppingCart?.clickurl}}" class="fa fa-edit"></a>
 												</td>
 												<td class="text-right">
 													<a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>

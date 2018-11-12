@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing } from './app.routes';
@@ -21,6 +22,7 @@ import { SlickModule } from 'ngx-slick';
     BrowserModule,
     routing,
     HttpClientModule,
+    CommonModule,
     SlickModule.forRoot()
   ],
   providers: [],

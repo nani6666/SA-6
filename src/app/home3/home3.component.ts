@@ -36,6 +36,7 @@ export class Home3Component implements OnInit {
 
   ngOnInit() {
     this.getAdverts();
+    this.getDefaultsData();
     
   }
 
@@ -54,10 +55,10 @@ export class Home3Component implements OnInit {
       // Array Sorted 
       if(this.advertsmainresponse.length === 6){
         let sortedMainArray = this.advertsmainresponse.sort((n1,n2) => {
-          if (n1.sectionheading > n2.sectionheading) {
+          if (n1.sequence > n2.sequence) {
               return 1;
           }
-          if (n1.sectionheading < n2.sectionheading) {
+          if (n1.sequence < n2.sequence) {
               return -1;
           }
           return 0;
@@ -99,17 +100,16 @@ public getDefaultsData() {
       this.defaultsAdvertsResponse = getdata.aDefault.adverts.advert;
       // Array Sorted 
        const sortedArray =  this.defaultsAdvertsResponse.sort((n1,n2) => {
-      if (n1.sectionheading > n2.sectionheading) {
+      if (n1.sequence > n2.sequence) {
           return 1;
       }
-      if (n1.sectionheading < n2.sectionheading) {
+      if (n1.sequence < n2.sequence) {
           return -1;
       }
       return 0;
       });
       //  Sorted Array itteration
-      this.defaultsAdvertsResponse.forEach(element => {
-        
+      sortedArray.forEach(element => {
          if (element.sectionheading == 'RIBBON1') {
          this.ribbon1Response = element.ribbons1.ribbon;
         } 
