@@ -9,14 +9,6 @@ import { CompileShallowModuleMetadata } from '@angular/compiler';
   styleUrls: ['./home3.component.css']
 })
 export class Home3Component implements OnInit {
-  slideConfig = {
-  'slidesToShow': 1, 'slidesToScroll': 1,
-  enabled: true,
-  autoplay: true,
-  draggable: true,
-  dots: true,
-  arrows: true
-};
   httpCode: any;
   httpErrorDispaly: boolean ;
   slideIndex: any;
@@ -36,7 +28,7 @@ export class Home3Component implements OnInit {
 
   ngOnInit() {
     this.getAdverts();
-    this.getDefaultsData();
+  //  this.getDefaultsData();
     
   }
 
@@ -52,41 +44,9 @@ export class Home3Component implements OnInit {
     this.httpErrorDispaly = false;
      if (postApiData) {
       this.advertsmainresponse = postApiData.main.adverts.advert;
-      // Array Sorted 
-      if(this.advertsmainresponse.length === 6){
-        let sortedMainArray = this.advertsmainresponse.sort((n1,n2) => {
-          if (n1.sequence > n2.sequence) {
-              return 1;
-          }
-          if (n1.sequence < n2.sequence) {
-              return -1;
-          }
-          return 0;
-          });
-      // sorted array itteration
-      sortedMainArray.forEach(element => {
-        if (element.sectionheading == 'RIBBON1') {
-          this.ribbon1Response = element.ribbons1.ribbon;
-         } 
-         if (element.sectionheading == 'RIBBON2') {
-          this.ribbon2Response = element.ribbons2.ribbon;
-         } 
-         if (element.sectionheading == 'RIBBON3') {
-          this.ribbon3Response = element.ribbons3.ribbon;
-         } 
-         if (element.sectionheading == 'SIDEBAR') {
-        this.sidebarResponse = element.sidebars.sidebar;
-         } 
-         if (element.sectionheading == 'SLIDER') {
-        this.sliderResponse  = element.sliders.slider;
-         } 
-        if (element.sectionheading == 'STRIP') {
-        this.stripResponse   = element.strips.strip;
-         } 
-      });
-      } else {
+      if(this.advertsmainresponse.length !== 6){
         this.getDefaultsData();
-      }
+      } 
      }
    }, error => {
     this.httpErrorDispaly = true;
@@ -123,7 +83,7 @@ public getDefaultsData() {
           this.sidebarResponse = element.sidebars.sidebar;
          } 
         if (element.sectionheading == 'SLIDER') {
-         this.sliderResponse  = element.sliders.sliders;
+         this.sliderResponse  = element.sliders.slider;
         } 
         if (element.sectionheading == 'STRIP') {
          this.stripResponse   = element.strips.strip
@@ -142,7 +102,17 @@ public getDefaultsData() {
       queryParams: { 'p': btoa(param)}
     });
   }
-
+  slidercourosel( sshow , sscroll){
+    const slideConfig = {
+      'slidesToShow': sshow, 'slidesToScroll': sscroll,
+      enabled: true,
+      autoplay: true,
+      draggable: true,
+      dots: true,
+      arrows: true
+    };
+    return  slideConfig;
+  }
    errorClose(){
     this.httpErrorDispaly = false;
    }

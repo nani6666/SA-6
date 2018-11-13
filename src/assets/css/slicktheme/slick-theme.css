@@ -31,10 +31,10 @@
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
     cursor: pointer;
-    color: #444 !important;
+    color: transparent !important;
     border: none;
     outline: none;
-    background:  #444 !important;
+    background:  transparent !important;
 }
 .slick-prev:hover,
 .slick-prev:focus,
@@ -43,7 +43,7 @@
 {
     color: transparent;
     outline: none;
-    background: #fff;
+    background: transparent;
 }
 .slick-prev:hover:before,
 .slick-prev:focus:before,
@@ -66,7 +66,7 @@
     line-height: 1;
 
     opacity: .75;
-    color: #fff;
+    color: transparent;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

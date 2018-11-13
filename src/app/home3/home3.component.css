@@ -14,7 +14,39 @@
     font-size: 17px;
 }
 
-
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0);
+	transition: background 0.5s ease;
+  }
+  .buttonimg {
+	position: absolute;
+	width: 500px;
+	left:0;
+	top: 180px;
+	text-align: center;
+	opacity: 0;
+	transition: opacity .35s ease;
+  }
+  
+  .buttonimg a {
+	width: 200px;
+	padding: 12px 48px;
+	text-align: center;
+	color: #fff;
+	border: solid 2px #444;
+	background: #000;
+	z-index: 1;
+  }
+  
+  .thumb-wrapper:hover .buttonimg {
+	opacity: 1;
+	text-align: center;
+  }
 
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;} 
@@ -46,7 +78,7 @@
   top: 3px;
 }
 
-h2 {
+h3 {
 	color: #000;
 	font-size: 26px;
 	font-weight: 300;
@@ -55,10 +87,10 @@ h2 {
 	position: relative;
 	margin: 30px 0 80px;
 }
-h2 b {
+h3 b {
 	color: #ffc000;
 }
-h2::after {
+h3::after {
 	content: "";
 	width: 100px;
 	position: absolute;
@@ -120,8 +152,22 @@ h2::after {
     font-weight: bold;
     margin-left: 5px;
 }
-.carousel .thumb-wrapper {
+.thumb-wrapper {
 	text-align: center;
+	position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }
 .carousel .thumb-content {
 	padding: 15px;
@@ -186,4 +232,40 @@ h2::after {
 .star-rating i {
 	font-size: 14px;
 	color: #ffc000;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    display: block;
+    max-width: 100%;
+    height: 250px !important;
+}
+
+.divleft{
+float: left;
+width:70%;
+position: relative;
+min-height: 1px;
+padding-right: 15px;
+padding-left: 15px;
+}
+.divRight{
+	float: right;
+	width:30%;
+	margin-top:55px;
+	position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+@media (min-width: 768px){
+	.divleft{
+	  float: left;
+	  width:70%;
+	 }
+	.divRight{
+	   float: right;
+	   width:30%;
+	   margin-top:55px;
+	 }
 }
