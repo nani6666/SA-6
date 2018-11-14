@@ -20,7 +20,7 @@ export class FooterComponent implements OnInit {
         this.footer = footerResponse.items.item ;
       }
      }, err => {
-       console.log(err);
+      this._apiService.errorTracking(err.error.status , err.error.path);
      });
   }
 }

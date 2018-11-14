@@ -269,3 +269,30 @@ padding-left: 15px;
 	   margin-top:55px;
 	 }
 }
+
+.cookie{
+	background-color: #000;
+    filter: alpha(opacity=85);
+    opacity: .85;
+    padding: 10px 18px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    min-height: 20px;
+}
+ .cookie p{
+	color: #c2c2c2;
+    font-size: 14px;
+    margin: 0 38px 0 0;
+    padding-right: 10px;
+    min-height: 35px;
+	line-height: 15px;
+	text-align: center;
+ }
+ .cookie .button {
+    padding: 0 16px;
+    background: #70cbf4;
+    color: #fff;
+}

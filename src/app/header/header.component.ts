@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
       this.mainsearch = this.mainLeftResponse.items.item[1];
      }
      }, err => {
-       console.log(err);
+      this._apiService.errorTracking(err.error.status , err.error.path);
      });
   }
 
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
         this.productSectors = data.Product.Sector;
        }
     }, err => {
-      console.log(err);
+      this._apiService.errorTracking(err.error.status , err.error.path);
     });
   }
   public serviceSectorsData() {
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
         this.serviceSectors = data.Service.Sector;
        }
     }, err => {
-      console.log(err);
+      this._apiService.errorTracking(err.error.status , err.error.path);
     });
   }
 }

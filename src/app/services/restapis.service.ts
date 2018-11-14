@@ -41,4 +41,14 @@ export class RestapisService {
                   return throwError(error);
                 }));
           }
+
+          errorTracking(httpcode  , restmethodname ){
+            const errordata = {
+                'restmethodname':restmethodname,
+                'httperrorcode':httpcode
+            }
+            this.postApiResponse('i4gorigin.admin-1.0.0/logAngularError' , errordata).subscribe( data => {
+              console.log(data);
+            });
+          }
 }

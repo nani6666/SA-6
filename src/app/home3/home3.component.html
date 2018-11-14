@@ -1,5 +1,6 @@
 
 <div *ngFor="let adverts of advertsmainresponse" [ngSwitch]="adverts.sectionheading">
+
     	<div class="divleft" *ngSwitchCase="'SLIDER'">
 					<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slidercourosel( 1, 1)">
 							<div ngxSlickItem *ngFor="let slideitem of adverts.sliders.slider; let slideindex=index;" class="slide">
@@ -8,7 +9,8 @@
 								</a>
 							</div>
 						</ngx-slick>
-				</div>
+			</div>
+			
 				<div  class="divRight" *ngSwitchCase="'SIDEBAR'">
 						<div class="module" *ngFor="let sidebarItem of adverts.sidebars.sidebar">
 								<div class="modcontent clearfix">
@@ -84,7 +86,7 @@
 															<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 														</ul>
 													</div>
-													<a href="#" class="btn btn-primary">Add to Cart</a>
+													<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 												</div>						
 											</div>
 								</div>
@@ -119,7 +121,7 @@
 															<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 														</ul>
 													</div>
-													<a href="#" class="btn btn-primary">Add to Cart</a>
+													<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 												</div>					
 										</div>
 							</div>
@@ -161,7 +163,7 @@
 																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 																</ul>
 															</div>
-															<a href="#" class="btn btn-primary">Add to Cart</a>
+															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 														</div>						
 													</div>
 												</div>
@@ -182,7 +184,7 @@
 																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 																</ul>
 															</div>
-															<a href="#" class="btn btn-primary">Add to Cart</a>
+															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 														</div>						
 													</div>
 												</div>
@@ -203,7 +205,7 @@
 																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 																</ul>
 															</div>
-															<a href="#" class="btn btn-primary">Add to Cart</a>
+															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 														</div>						
 													</div>
 												</div>	
@@ -224,7 +226,7 @@
 																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 																</ul>
 															</div>
-															<a href="#" class="btn btn-primary">Add to Cart</a>
+															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 														</div>						
 													</div>
 												</div>
@@ -249,7 +251,7 @@
 																<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 															</ul>
 														</div>
-														<a href="#" class="btn btn-primary">Add to Cart</a>
+														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 													</div>						
 												</div>
 											</div>
@@ -270,7 +272,7 @@
 																<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 															</ul>
 														</div>
-														<a href="#" class="btn btn-primary">Add to Cart</a>
+														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 													</div>						
 												</div>
 											</div>
@@ -291,7 +293,7 @@
 																<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 															</ul>
 														</div>
-														<a href="#" class="btn btn-primary">Add to Cart</a>
+														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 													</div>						
 												</div>
 											</div>	
@@ -312,7 +314,7 @@
 																<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 															</ul>
 														</div>
-														<a href="#" class="btn btn-primary">Add to Cart</a>
+														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
 													</div>						
 												</div>
 											</div>
@@ -333,5 +335,6 @@
 		</div>
 </div>
 
-
-	
+<div class="cookie" *ngIf="httpErrorDispaly">
+	<p>Our website uses cookies to improve your experience. To find out more, please read our <a href="JavaScript:void(0);">Cookies Notice</a> &nbsp; <button class="btn btn-info" (click)="cookieClose()">close</button></p>
+</div>

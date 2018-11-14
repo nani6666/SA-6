@@ -53,6 +53,7 @@ export class ProductComponent implements OnInit {
       }
       console.log(data);
     }, error => {
+      this._apiService.errorTracking(error.error.status , error.error.path);
     });
   }
 

@@ -29,7 +29,7 @@ export class Home3Component implements OnInit {
   ngOnInit() {
     this.getAdverts();
     this.getDefaultsData();
-    
+    this.httpErrorDispaly = true; 
   }
 
   public getAdverts() {
@@ -41,7 +41,6 @@ export class Home3Component implements OnInit {
     };
    this._apiService.postApiResponse('i4gorigin.advert.main/getAllAvailableAdvertsSectionsForMain',
    advertsRequestData).subscribe(postApiData => {
-    this.httpErrorDispaly = false;
      if (postApiData) {
       this.advertsmainresponse = postApiData.main.adverts.advert;
       if(this.advertsmainresponse.length !== 6){
@@ -49,8 +48,7 @@ export class Home3Component implements OnInit {
       } 
      }
    }, error => {
-    this.httpErrorDispaly = true;
-    this.httpCode = error.status + "-" + error.statusText;
+     this._apiService.errorTracking(error.error.status , error.error.path);
    });
   }
 
@@ -91,8 +89,8 @@ public getDefaultsData() {
        });
     }
    },error => {
-    this.httpErrorDispaly = true;
-    this.httpCode = error.status + "-" + error.statusText;
+    this._apiService.errorTracking(error.error.status , error.error.path);
+    
    });
 }
 
@@ -113,7 +111,7 @@ public getDefaultsData() {
     };
     return  slideConfig;
   }
-   errorClose(){
+   cookieClose(){
     this.httpErrorDispaly = false;
    }
 
