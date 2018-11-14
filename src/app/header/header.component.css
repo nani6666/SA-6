@@ -67,7 +67,7 @@
   
   .navigation {
     width: 13em;
-    background: #ffffff;
+    background: transparent;
     font-family: 'roboto', Tahoma, Arial, sans-serif;
     zoom: 1;
   }
@@ -96,14 +96,15 @@
   .navigation ul ul { width: 13em; }
   
   .navigation > ul > li > a {
-    border-right: 0.3em solid #444;
-    color: #444;
+    color: #fff;
   }
   
   .navigation > ul > li > a:hover { color: #444; }
   
   .navigation > ul > li a:hover,
-  .navigation > ul > li:hover a { background: #ffffff; }
+  .navigation > ul > li:hover a {
+    color: #444;
+     background: #ffffff; }
   
   .navigation li { position: relative; }
   
@@ -190,3 +191,5 @@
     -moz-border-radius: 3px 0 0 3px;
     border-radius: 3px 0 0 3px;
   }
+
+ 

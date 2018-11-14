@@ -28,7 +28,7 @@ export class Home3Component implements OnInit {
 
   ngOnInit() {
     this.getAdverts();
-  //  this.getDefaultsData();
+    this.getDefaultsData();
     
   }
 
