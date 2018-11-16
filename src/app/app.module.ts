@@ -10,7 +10,6 @@ import { ProductComponent } from './product/product.component';
 import { HttpClientModule } from '@angular/common/http';
 // Import your library
 import { SlickModule } from 'ngx-slick';
-
 @NgModule({
   declarations: [
     AppComponent,

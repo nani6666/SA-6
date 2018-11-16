@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {RestapisService} from '../services/restapis.service';
 import { Router } from '@angular/router';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-home3',
@@ -9,6 +8,7 @@ import { CompileShallowModuleMetadata } from '@angular/compiler';
   styleUrls: ['./home3.component.css']
 })
 export class Home3Component implements OnInit {
+  @ViewChild('slickModal') slickModal;
   httpCode: any;
   httpErrorDispaly: boolean ;
   slideIndex: any;
@@ -30,6 +30,7 @@ export class Home3Component implements OnInit {
     this.getAdverts();
     this.getDefaultsData();
     this.httpErrorDispaly = true; 
+    console.log(this.slickModal);
   }
 
   public getAdverts() {

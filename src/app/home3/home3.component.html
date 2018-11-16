@@ -10,7 +10,6 @@
 							</div>
 						</ngx-slick>
 			</div>
-			
 				<div  class="divRight" *ngSwitchCase="'SIDEBAR'">
 						<div class="module" *ngFor="let sidebarItem of adverts.sidebars.sidebar">
 								<div class="modcontent clearfix">
@@ -46,16 +45,23 @@
 		
 		<div *ngSwitchCase="'RIBBON1'" >
 				<h3>New  <b>Products</b></h3>
-				<div class="thumb-wrapper" *ngFor="let ribbon1items of adverts.ribbons1.ribbon">
-						<div class="img-box">
-								<a >
-							<img src="https://s3-eu-west-1.amazonaws.com{{ribbon1items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
-						</div>
-						<div class="overlay"></div>
-                        <div class="buttonimg"><a (click)="onClick(ribbon1items.advertitemcode)"> Quick view </a></div>
-						<span class="label label-sale">-40%</span>
-											
-					</div>
+				<div class="container">
+						<div class="row">
+								<div class="col-md-12" *ngFor="let ribbon1items of adverts.ribbons1.ribbon">
+								<div class="thumb-wrapper" >
+								<div class="img-box">
+										<a >
+									<img src="https://s3-eu-west-1.amazonaws.com{{ribbon1items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
+								
+								</div>
+								<div class="overlay"></div>
+								<div Class="buttonimgRibbon " ><a (click)="onClick(ribbon1items.advertitemcode)"> Quick view </a></div>
+								<span class="label label-sale">-40%</span>
+								</div> 				
+							   </div>
+							</div>
+				</div>
+				
 		</div>
 		<div *ngSwitchCase="'RIBBON2'" >
 				<h3>Feature  <b>Products</b></h3>
@@ -333,6 +339,7 @@
 						</div>
 					</div>
 		</div>
+		
 </div>
 
 <div class="cookie" *ngIf="httpErrorDispaly">
