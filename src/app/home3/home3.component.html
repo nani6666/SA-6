@@ -1,3 +1,4 @@
+<div class="advertsMain"> 
 
 <div *ngFor="let adverts of advertsmainresponse" [ngSwitch]="adverts.sectionheading">
 
@@ -7,6 +8,7 @@
 									<a (click)="onClick(slideitem.advertitemcode)">
 									<img src="https://s3-eu-west-1.amazonaws.com/{{slideitem.imageurl}}" alt="" width="100%">
 								</a>
+
 							</div>
 						</ngx-slick>
 			</div>
@@ -341,7 +343,8 @@
 		</div>
 		
 </div>
-
+	
+</div>
 
 <div class="cookie" *ngIf="httpErrorDispaly">
 	<p>Our website uses cookies to improve your experience. To find out more, please read our <a href="JavaScript:void(0);">Cookies Notice</a> &nbsp; <button class="btn btn-info" (click)="cookieClose()">close</button></p>
