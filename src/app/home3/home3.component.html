@@ -4,9 +4,9 @@
 
     	<div class="divleft" *ngSwitchCase="'SLIDER'">
 					<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slidercourosel( 1, 1)">
-							<div ngxSlickItem *ngFor="let slideitem of adverts.sliders.slider; let slideindex=index;" class="slide">
+							<div ngxSlickItem *ngFor="let slideitem of adverts?.sliders?.slider; let slideindex=index;" class="slide">
 									<a (click)="onClick(slideitem.advertitemcode)">
-									<img src="https://s3-eu-west-1.amazonaws.com/{{slideitem.imageurl}}" alt="" width="100%">
+									<img src="https://s3-eu-west-1.amazonaws.com/{{slideitem?.imageurl}}" alt="" width="100%">
 								</a>
 
 							</div>

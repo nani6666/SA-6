@@ -21,6 +21,12 @@ export class Home3Component implements OnInit {
   ribbon1Response: any;
   ribbon2Response: any;
   ribbon3Response: any;
+  defaultsliderResponse: any;
+  defaultstripResponse: any;
+  defaultsidebarResponse: any;
+  defaultribbon1Response: any;
+  defaultribbon2Response: any;
+  defaultribbon3Response: any;
 
   constructor(private _apiService: RestapisService , private router: Router) {
     this.httpErrorDispaly = false;
@@ -70,22 +76,22 @@ public getDefaultsData() {
       //  Sorted Array itteration
       sortedArray.forEach(element => {
          if (element.sectionheading == 'RIBBON1') {
-         this.ribbon1Response = element.ribbons1.ribbon;
+         this.defaultribbon1Response = element.ribbons1.ribbon;
         } 
         if (element.sectionheading == 'RIBBON2') {
-         this.ribbon2Response = element.ribbons2.ribbon;
+         this.defaultribbon2Response = element.ribbons2.ribbon;
         } 
         if (element.sectionheading == 'RIBBON3') {
-         this.ribbon3Response = element.ribbons3.ribbon;
+         this.defaultribbon3Response = element.ribbons3.ribbon;
         } 
         if (element.sectionheading == 'SIDEBAR') {
-          this.sidebarResponse = element.sidebars.sidebar;
+          this.defaultsidebarResponse = element.sidebars.sidebar;
          } 
         if (element.sectionheading == 'SLIDER') {
-         this.sliderResponse  = element.sliders.slider;
+         this.defaultsliderResponse  = element.sliders.slider;
         } 
         if (element.sectionheading == 'STRIP') {
-         this.stripResponse   = element.strips.strip
+         this.defaultstripResponse   = element.strips.strip
         }
        });
     }

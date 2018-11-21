@@ -39,7 +39,7 @@
 						<div class="tabBlock" id="TabBlock-1">
 							<ul class="top-link list-inline">
 								<li *ngFor="let rightMainItems of topRightItems" class="account" id="my_account">
-									<a  href="{{rightMainItems?.clickurl}}" title="{{rightMainItems.name}}" class="btn btn-xs dropdown-toggle" >
+									<a  *ngIf="rightMainItems.signed == 'true' || rightMainItems.signed == 'both' " href="{{rightMainItems?.clickurl}}" title="{{rightMainItems.name}}" class="btn btn-xs dropdown-toggle" >
 										 <i class="fa" [ngClass]="{'fa-lock': rightMainItems.name === 'Login', 'fa-user': rightMainItems.name === 'Register', 'fa-heart': rightMainItems.name === 'My Wish List'}" ></i> {{rightMainItems.name}} </a>
 								</li>
 							</ul>
