@@ -63,18 +63,29 @@ public getDefaultsData() {
   this._apiService.getApiResponse('i4gorigin.advert.main/getDefaultAdvertsForAllSections').subscribe(getdata => {
     if (getdata) {
       this.defaultsAdvertsResponse = getdata.aDefault.adverts.advert;
-      // Array Sorted 
-       const sortedArray =  this.defaultsAdvertsResponse.sort((n1,n2) => {
-      if (n1.sequence > n2.sequence) {
-          return 1;
-      }
-      if (n1.sequence < n2.sequence) {
-          return -1;
-      }
-      return 0;
-      });
+      // // Array Sorted 
+      //  const sortedArray =  this.defaultsAdvertsResponse.sort((n1,n2) => {
+      // if (n1.sequence > n2.sequence) {
+      //     return 1;
+      // }
+      // if (n1.sequence < n2.sequence) {
+      //     return -1;
+      // }
+      // return 0;
+      // });
       //  Sorted Array itteration
-      sortedArray.forEach(element => {
+      this.defaultsAdvertsResponse.forEach(element => {
+        console.log(element);
+        if (element.sectionheading == 'SLIDER') {
+          this.defaultsliderResponse  = element.sliders.slider;
+         } 
+         if (element.sectionheading == 'SIDEBAR') {
+          this.defaultsidebarResponse = element.sidebars.sidebar;
+         } 
+        
+        if (element.sectionheading == 'STRIP') {
+         this.defaultstripResponse   = element.strips.strip
+        }
          if (element.sectionheading == 'RIBBON1') {
          this.defaultribbon1Response = element.ribbons1.ribbon;
         } 
@@ -84,16 +95,9 @@ public getDefaultsData() {
         if (element.sectionheading == 'RIBBON3') {
          this.defaultribbon3Response = element.ribbons3.ribbon;
         } 
-        if (element.sectionheading == 'SIDEBAR') {
-          this.defaultsidebarResponse = element.sidebars.sidebar;
-         } 
-        if (element.sectionheading == 'SLIDER') {
-         this.defaultsliderResponse  = element.sliders.slider;
-        } 
-        if (element.sectionheading == 'STRIP') {
-         this.defaultstripResponse   = element.strips.strip
-        }
+       
        });
+       console.log(this.defaultstripResponse);
     }
    },error => {
     this._apiService.errorTracking(error.error.status , error.error.path);
@@ -109,7 +113,8 @@ public getDefaultsData() {
   }
   slidercourosel( sshow , sscroll){
     const slideConfig = {
-      'slidesToShow': sshow, 'slidesToScroll': sscroll,
+      'slidesToShow': sshow, 
+      'slidesToScroll': sscroll,
       enabled: true,
       autoplay: true,
       draggable: true,

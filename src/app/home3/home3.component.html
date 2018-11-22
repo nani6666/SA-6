@@ -1,40 +1,83 @@
 <div class="advertsMain"> 
 
 <div *ngFor="let adverts of advertsmainresponse" [ngSwitch]="adverts.sectionheading">
-
-    	<div class="divleft" *ngSwitchCase="'SLIDER'">
+    	<div class="divleft" *ngSwitchCase ="'SLIDER'">
+			<div *ngIf="!adverts?.sliders?.slider.length <= 1">
 					<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slidercourosel( 1, 1)">
 							<div ngxSlickItem *ngFor="let slideitem of adverts?.sliders?.slider; let slideindex=index;" class="slide">
 									<a (click)="onClick(slideitem.advertitemcode)">
 									<img src="https://s3-eu-west-1.amazonaws.com/{{slideitem?.imageurl}}" alt="" width="100%">
 								</a>
-
 							</div>
 						</ngx-slick>
 			</div>
+			<div *ngIf="adverts?.sliders?.slider.length <= 1">
+				<p>default</p>
+					<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slidercourosel( 1, 1)">
+							<div ngxSlickItem *ngFor="let slideitem of defaultsliderResponse; let slideindex=index;" class="slide">
+									<a (click)="onClick(slideitem.advertitemcode)">
+									<img src="https://s3-eu-west-1.amazonaws.com{{slideitem?.imageurl}}" alt="" width="100%">
+								</a>
+							</div>
+						</ngx-slick>
+			</div>
+					
+			</div>
 				<div  class="divRight" *ngSwitchCase="'SIDEBAR'">
-						<div class="module" *ngFor="let sidebarItem of adverts.sidebars.sidebar">
-								<div class="modcontent clearfix">
-									<div class="banners">
-										<div>
-											 <a (click)="onClick(sidebarItem.advertitemcode)" > <!-- href="https://{{subsidebarItem.linkurl}}" -->
-												<img src="https://s3-eu-west-1.amazonaws.com/{{sidebarItem.imageurl}}" alt="left-image">
-											</a>
+					<div *ngIf="adverts?.sidebars?.sidebar?.length > 0">
+						<!-- <span>{{adverts?.sidebars?.sidebar?.length > 0 }}</span> -->
+							<div class="module" *ngFor="let sidebarItem of adverts?.sidebars?.sidebar">
+									<div class="modcontent clearfix">
+										<div class="banners">
+											<div>
+												 <a (click)="onClick(sidebarItem.advertitemcode)" > <!-- href="https://{{subsidebarItem.linkurl}}" -->
+													<img src="https://s3-eu-west-1.amazonaws.com/{{sidebarItem.imageurl}}" alt="left-image">
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+					</div>
+					<div *ngIf="!adverts?.sidebars?.sidebar?.length > 0">
+							<p>{{adverts?.sidebars?.sidebar?.length}}</p>
+								<div class="module" *ngFor="let sidebarItem of defaultsidebarResponse">
+										<div class="modcontent clearfix">
+											<div class="banners">
+												<div>
+													 <a (click)="onClick(sidebarItem.advertitemcode)" > <!-- href="https://{{subsidebarItem.linkurl}}" -->
+														<img src="https://s3-eu-west-1.amazonaws.com/{{sidebarItem.imageurl}}" alt="left-image">
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+						</div>
+						
 				</div>
 		<div *ngSwitchCase="'STRIP'">
 				<section class="so-spotlight1 ">
 						<div class="container">
 							<div class="row">
-								<div id="yt_header_right" class="col-md-12 hidden-sm hidden-xs" >
+							 <div id="yt_header_right" class="col-md-12 hidden-sm hidden-xs" >
+								<div *ngIf="adverts?.strips?.strip?.length > 0">
 									<div class="module" *ngFor="let stripItem of adverts.strips.strip">
 										<div class="modcontent clearfix">
 											<div class="banners">
 												<div>
 													<a (click)="onClick(stripItem.advertitemcode)"><img src="https://s3-eu-west-1.amazonaws.com{{stripItem.imageurl}}" alt="left-image"></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div *ngIf="!adverts?.strips?.strip?.length > 0">
+										<div class="module" *ngFor="let defaultstripItem of defaultstripResponse">
+											<div class="modcontent clearfix">
+												<div class="banners">
+													<div>
+														<a (click)="onClick(defaultstripItem.advertitemcode)">
+															<img src="https://s3-eu-west-1.amazonaws.com{{defaultstripItem.imageurl}}" alt="left-image"></a>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -49,18 +92,34 @@
 				<h3>New  <b>Products</b></h3>
 				<div class="container">
 						<div class="row">
+							<div *ngIf="adverts?.ribbons1?.ribbon?.length > 0">
 								<div class="col-md-12" *ngFor="let ribbon1items of adverts.ribbons1.ribbon">
-								<div class="thumb-wrapper" >
-								<div class="img-box">
-										<a >
-									<img src="https://s3-eu-west-1.amazonaws.com{{ribbon1items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
-								
+									<div class="thumb-wrapper" >
+										<div class="img-box">
+												<a >
+											<img src="https://s3-eu-west-1.amazonaws.com{{ribbon1items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
+												
+										</div>
+									 <div class="overlay"></div>
+									 <div Class="buttonimgRibbon " ><a (click)="onClick(ribbon1items.advertitemcode)"> Quick view </a></div>
+									 <span class="label label-sale">-40%</span>
+									</div> 							
+								 </div>
+							</div>
+							<div  *ngIf="!adverts?.ribbons1?.ribbon?.length > 0">
+									<div class="col-md-12" *ngFor="let defaultribbon1items of defaultribbon1Response">
+										<div class="thumb-wrapper" >
+											<div class="img-box">
+													<a >
+												<img src="https://s3-eu-west-1.amazonaws.com{{defaultribbon1items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
+													
+											</div>
+										 <div class="overlay"></div>
+										 <div Class="buttonimgRibbon " ><a (click)="onClick(defaultribbon1items.advertitemcode)"> Quick view </a></div>
+										 <span class="label label-sale">-40%</span>
+										</div> 							
+									 </div>
 								</div>
-								<div class="overlay"></div>
-								<div Class="buttonimgRibbon " ><a (click)="onClick(ribbon1items.advertitemcode)"> Quick view </a></div>
-								<span class="label label-sale">-40%</span>
-								</div> 				
-							   </div>
 							</div>
 				</div>
 				
@@ -70,34 +129,67 @@
 			<section>
 				<div class="container">
 						<div class="row" >
+							<div *ngIf="adverts?.ribbons2?.ribbon?.length === 2">
 								<div class="col-sm-6" *ngFor="let ribbon2items of adverts.ribbons2.ribbon">
-										<div class="thumb-wrapper" >
-												<div class="img-box">
-														<a >
-													<img src="https://s3-eu-west-1.amazonaws.com{{ribbon2items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
-												</div>
-												<div class="overlay"></div>
-                                                <div class="buttonimg"><a (click)="onClick(ribbon2Item.advertitemcode)"> Quick view </a></div>
-												<span class="label label-sale">-25%</span>
-												<div class="thumb-content">
-													<h4>Product Name</h4>
-													<div class="price">
-															<span class="price-new">$50.00</span> 
-															<span class="price-old">$62.00</span>		 
-														</div>
-													<div class="star-rating">
-														<ul class="list-inline">
-															<li class="list-inline-item"><i class="fa fa-star"></i></li>
-															<li class="list-inline-item"><i class="fa fa-star"></i></li>
-															<li class="list-inline-item"><i class="fa fa-star"></i></li>
-															<li class="list-inline-item"><i class="fa fa-star"></i></li>
-															<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-														</ul>
+											<div class="thumb-wrapper" >
+													<div class="img-box">
+															<a >
+														<img src="https://s3-eu-west-1.amazonaws.com{{ribbon2items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
 													</div>
-													<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-												</div>						
-											</div>
+													<div class="overlay"></div>
+													<div class="buttonimg"><a (click)="onClick(ribbon2Item.advertitemcode)"> Quick view </a></div>
+													<span class="label label-sale">-25%</span>
+													<div class="thumb-content">
+														<h4>Product Name</h4>
+														<div class="price">
+																<span class="price-new">$50.00</span> 
+																<span class="price-old">$62.00</span>		 
+															</div>
+														<div class="star-rating">
+															<ul class="list-inline">
+																<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+															</ul>
+														</div>
+														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
+													</div>						
+												</div>
 								</div>
+							</div>
+							<div *ngIf="adverts?.ribbons2?.ribbon?.length !== 2">
+									<div class="col-sm-6" *ngFor="let defaultribbon2items of defaultribbon2Response">
+												<div class="thumb-wrapper" >
+														<div class="img-box">
+																<a >
+															<img src="https://s3-eu-west-1.amazonaws.com{{defaultribbon2items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
+														</div>
+														<div class="overlay"></div>
+														<div class="buttonimg"><a (click)="onClick(defaultribbon2items.advertitemcode)"> Quick view </a></div>
+														<span class="label label-sale">-25%</span>
+														<div class="thumb-content">
+															<h4>Product Name</h4>
+															<div class="price">
+																	<span class="price-new">$50.00</span> 
+																	<span class="price-old">$62.00</span>		 
+																</div>
+															<div class="star-rating">
+																<ul class="list-inline">
+																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+																</ul>
+															</div>
+															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
+														</div>						
+													</div>
+									</div>
+								</div>
+								
 							</div>
 				</div>
 				
@@ -108,59 +200,18 @@
 			<section>
 				<div class="container">
 						<div class="row" >
-							<div class="col-sm-4" *ngFor="let ribbon3items of adverts.ribbons3.ribbon ; let i=index">
-									<div class="thumb-wrapper" >
-											<div class="img-box">
-													<a>
-												<img src="https://s3-eu-west-1.amazonaws.com{{ribbon3items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
-											</div>
-											<div class="overlay"></div>
-                                                <div class="buttonimg"><a (click)="onClick(ribbon3items.advertitemcode)"> Quick view </a></div>
-											<span class="label label-sale">-50%</span>
-											<div class="thumb-content">
-													<h4>Product Name</h4>
-													<p class="item-price"> <span>$349.00</span></p>
-													<div class="star-rating">
-														<ul class="list-inline">
-															<li class="list-inline-item"><i class="fa fa-star"></i></li>
-															<li class="list-inline-item"><i class="fa fa-star"></i></li>
-															<li class="list-inline-item"><i class="fa fa-star"></i></li>
-															<li class="list-inline-item"><i class="fa fa-star"></i></li>
-															<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-														</ul>
+							<div *ngIf="adverts?.ribbons3?.ribbon?.length === 3">
+									<div class="col-sm-4" *ngFor="let ribbon3items of adverts.ribbons3.ribbon ; let i=index">
+											<div class="thumb-wrapper" >
+													<div class="img-box">
+															<a>
+														<img src="https://s3-eu-west-1.amazonaws.com{{ribbon3items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
 													</div>
-													<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-												</div>					
-										</div>
-							</div>
-							</div>
-				</div>
-				
-				</section>
-			</div>
-		<div *ngSwitchDefault >
-
-				<div class="container" >
-						<div class="row">
-							<div class="col-md-12">
-								<h3>Trending <b>Products</b></h3>
-								<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-									<li data-target="#myCarousel" data-slide-to="1"></li>
-								</ol>   
-								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-											<div class="row">
-												<div class="col-sm-3">
-													<div class="thumb-wrapper">
-														<div class="img-box">
-															<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/Stormtrooper_helmets_600_grande.jpg" class="img-responsive img-fluid" alt="">
-														</div>
-														<div class="thumb-content">
-															<h4>Apple iPhone</h4>
+													<div class="overlay"></div>
+														<div class="buttonimg"><a (click)="onClick(ribbon3items.advertitemcode)"> Quick view </a></div>
+													<span class="label label-sale">-50%</span>
+													<div class="thumb-content">
+															<h4>Product Name</h4>
 															<p class="item-price"> <span>$349.00</span></p>
 															<div class="star-rating">
 																<ul class="list-inline">
@@ -172,83 +223,59 @@
 																</ul>
 															</div>
 															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-														</div>						
-													</div>
+														</div>					
 												</div>
-												<div class="col-sm-3">
-													<div class="thumb-wrapper">
-														<div class="img-box">
-															<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
-														</div>
-														<div class="thumb-content">
-															<h4>Canon DSLR</h4>
-															<p class="item-price"> <span>$250.00</span></p>
-															<div class="star-rating">
-																<ul class="list-inline">
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-																</ul>
-															</div>
-															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-														</div>						
-													</div>
-												</div>
-												<div class="col-sm-3">
-													<div class="thumb-wrapper">
-														<div class="img-box">
-															<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
-														</div>
-														<div class="thumb-content">
-															<h4>Google Pixel</h4>
-															<p class="item-price"><span>$418.00</span></p>
-															<div class="star-rating">
-																<ul class="list-inline">
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-																</ul>
-															</div>
-															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-														</div>						
-													</div>
-												</div>	
-												<div class="col-sm-3">
-													<div class="thumb-wrapper">
-														<div class="img-box">
-															<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
-														</div>
-														<div class="thumb-content">
-															<h4>Apple Watch</h4>
-															<p class="item-price"><span>$330.00</span></p>
-															<div class="star-rating">
-																<ul class="list-inline">
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-																</ul>
-															</div>
-															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-														</div>						
-													</div>
-												</div>
-											</div>
-										</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper">
+									</div>
+							</div>
+							<div  *ngIf="adverts?.ribbons3?.ribbon?.length !== 3">
+									<div class="col-sm-4" *ngFor="let defaultribbon3items of defaultribbon3Response ; let i=index">
+											<div class="thumb-wrapper" >
 													<div class="img-box">
-														<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
+															<a>
+														<img src="https://s3-eu-west-1.amazonaws.com{{defaultribbon3items.imageurl}}" class="img-responsive img-fluid" alt=""></a>
 													</div>
+													<div class="overlay"></div>
+														<div class="buttonimg"><a (click)="onClick(defaultribbon3items.advertitemcode)"> Quick view </a></div>
+													<span class="label label-sale">-50%</span>
 													<div class="thumb-content">
-														<h4>Apple iPhone</h4>
+															<h4>Product Name</h4>
+															<p class="item-price"> <span>$349.00</span></p>
+															<div class="star-rating">
+																<ul class="list-inline">
+																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																	<li class="list-inline-item"><i class="fa fa-star"></i></li>
+																	<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+																</ul>
+															</div>
+															<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
+														</div>					
+												</div>
+									</div>
+							</div>
+							</div>
+				</div>
+				</section>
+			</div>
+		<div *ngSwitchDefault >
+
+		</div>
+		<!-- <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slidercourosel( 3, 1)">
+				<div class="row" >
+				<div >
+						
+								<div ngxSlickItem *ngFor="let slidesssitem of defaultribbon3Response; let slideindex=index;" class="slide col-sm-4">
+										<div class="thumb-wrapper" >
+												<div class="img-box">
+														<a>
+													<img src="https://s3-eu-west-1.amazonaws.com{{slidesssitem.imageurl}}" class="img-responsive img-fluid" alt=""></a>
+												</div>
+												<div class="overlay"></div>
+													<div class="buttonimg"><a (click)="onClick(slidesssitem.advertitemcode)"> Quick view </a></div>
+												<span class="label label-sale">-50%</span>
+												<div class="thumb-content">
+														<h4>Product Name</h4>
 														<p class="item-price"> <span>$349.00</span></p>
 														<div class="star-rating">
 															<ul class="list-inline">
@@ -260,88 +287,12 @@
 															</ul>
 														</div>
 														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-													</div>						
-												</div>
+													</div>					
 											</div>
-											<div class="col-sm-3">
-												<div class="thumb-wrapper">
-													<div class="img-box">
-														<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>Canon DSLR</h4>
-														<p class="item-price"> <span>$250.00</span></p>
-														<div class="star-rating">
-															<ul class="list-inline">
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-															</ul>
-														</div>
-														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="thumb-wrapper">
-													<div class="img-box">
-														<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>Google Pixel</h4>
-														<p class="item-price"><span>$418.00</span></p>
-														<div class="star-rating">
-															<ul class="list-inline">
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-															</ul>
-														</div>
-														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper">
-													<div class="img-box">
-														<img src="https://s3-eu-west-1.amazonaws.com/sprkrpvvak/1ds/prajagatham/adverts/20181020/0800/IMG_0030_large.jpg" class="img-responsive img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>Apple Watch</h4>
-														<p class="item-price"><span>$330.00</span></p>
-														<div class="star-rating">
-															<ul class="list-inline">
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star"></i></li>
-																<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-															</ul>
-														</div>
-														<a href="JavaScript:void(0);" class="btn btn-primary">Add to Cart</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-							</div>
-						</div>
-					</div>
-		</div>
-		
+								</div>
+				</div>
+			</ngx-slick> -->
 </div>
 	
 </div>
